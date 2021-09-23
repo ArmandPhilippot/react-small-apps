@@ -28,10 +28,66 @@ body {
 
 .main {
   flex: 1;
+  margin: 0 0 2rem;
 }
 
 .footer {
   text-align: center;
   font-size: 0.9rem;
   padding: 2rem 0;
+}
+
+.meme-generator__meme {
+  margin: auto;
+  text-align: center;
+  position: relative;
+}
+
+.meme-generator__input {
+  background: transparent;
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: 1.5;
+  text-align: center;
+  width: 100%;
+}
+
+.meme-generator__input:focus {
+  outline: none;
+}
+
+.meme-generator__headline {
+  color: #fff;
+  font-size: 3rem;
+  font-weight: 600;
+  text-shadow: 3px 3px 0 #000;
+  position: absolute;
+  left: 0;
+  right: 0;
+  min-height: 80px;
+}
+
+.meme-generator__headline--first {
+  top: 0;
+}
+
+.meme-generator__headline--last {
+  bottom: 0;
+}
+
+.meme-generator__img {
+  display: block;
+  width: 100%;
+  border: 1px solid #ccc;
+}
+
+.meme-generator__random {
+  margin: 2rem auto 0;
+}
+
+.btn {
+  cursor: pointer;
+  display: block;
+  padding: 0.5rem 1rem;
 }
