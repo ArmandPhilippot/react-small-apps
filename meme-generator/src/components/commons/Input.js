@@ -1,14 +1,15 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 function Input({
+  inputValue,
+  setInputValue,
   label = "Input label",
   type = "text",
   name = "input-text",
   value = "",
 }) {
   const inputField = useRef(null);
-  const [inputValue, setInputValue] = useState("");
-  useEffect(() => setInputValue(value), [value]);
+  useEffect(() => setInputValue(value), [setInputValue, value]);
 
   const setFocus = () => {
     inputField.current.focus();

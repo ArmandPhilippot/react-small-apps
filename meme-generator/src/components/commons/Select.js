@@ -1,14 +1,15 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Option from "./Option";
 
 function Select({
+  selectValue,
+  setSelectValue,
   label = "Select an option:",
   options = [{ value: "Option name", name: "option-name" }],
   name = "select",
   defaultValue = "",
 }) {
-  const [selectValue, setSelectValue] = useState("");
-  useEffect(() => setSelectValue(defaultValue), [defaultValue]);
+  useEffect(() => setSelectValue(defaultValue), [setSelectValue, defaultValue]);
 
   const optionsList = options.map(
     (option) => (

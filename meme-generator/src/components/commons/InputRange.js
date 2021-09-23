@@ -1,6 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 function InputRange({
+  inputValue,
+  setInputValue,
   label = "Input label",
   name = "input-range",
   value = "25",
@@ -8,8 +10,7 @@ function InputRange({
   max = "50",
   step = "1",
 }) {
-  const [inputValue, setInputValue] = useState("");
-  useEffect(() => setInputValue(value), [value]);
+  useEffect(() => setInputValue(value), [setInputValue, value]);
 
   const updateValue = (e) => {
     setInputValue(e.target.value);
