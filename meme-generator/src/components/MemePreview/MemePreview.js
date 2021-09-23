@@ -7,7 +7,7 @@ async function fetchMemes() {
   return await result;
 }
 
-function MemeGenerator() {
+function MemePreview() {
   const [isFetched, setIsFetched] = useState(false);
   const [memes, setMemes] = useState([]);
 
@@ -34,13 +34,13 @@ function MemeGenerator() {
   };
 
   return (
-    <div className="meme-generator">
+    <div className="meme-preview">
       <Meme meme={selectedMeme} />
-      <button className="meme-generator__random btn" onClick={handleOnClick}>
+      <button className="meme-preview__random btn" onClick={handleOnClick}>
         Random image
       </button>
     </div>
   );
 }
 
-export default MemeGenerator;
+export default MemePreview;

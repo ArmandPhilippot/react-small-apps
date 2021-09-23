@@ -25,7 +25,7 @@ function Headline({ position }) {
     <form onSubmit={handleSubmit}>
       <input
         type="text"
-        className={`meme-generator__input meme-generator__headline meme-generator__headline--${
+        className={`meme-preview__input meme-preview__headline meme-preview__headline--${
           position === "first" ? "first" : "last"
         }`}
         value={headline}
@@ -36,7 +36,7 @@ function Headline({ position }) {
     </form>
   ) : (
     <p
-      className={`meme-generator__headline meme-generator__headline--${
+      className={`meme-preview__headline meme-preview__headline--${
         position === "first" ? "first" : "last"
       }`}
       onClick={onTextClick}

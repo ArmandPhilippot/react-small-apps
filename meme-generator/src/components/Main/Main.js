@@ -1,9 +1,9 @@
-import MemeGenerator from "../MemeGenerator/MemeGenerator";
+import MemePreview from "../MemePreview/MemePreview";
 
 function Main() {
   return (
     <main className="main">
-      <MemeGenerator />
+      <MemePreview />
     </main>
   );
 }

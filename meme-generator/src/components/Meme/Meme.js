@@ -2,9 +2,9 @@ import Headline from "../Headline/Headline";
 
 function Meme({ meme = {} }) {
   return (
-    <div className="meme-generator__meme">
+    <div className="meme-preview__meme">
       <Headline position="first" />
-      <img src={meme.url} alt={meme.name} className="meme-generator__img" />
+      <img src={meme.url} alt={meme.name} className="meme-preview__image" />
       <Headline position="last" />
     </div>
   );
