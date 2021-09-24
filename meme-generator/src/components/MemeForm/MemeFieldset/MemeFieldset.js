@@ -35,21 +35,14 @@ function MemeFieldset({
       x: selectXValue,
       y: selectYValue,
     };
-    setHeadlinesList((array) => {
-      if (array.length === 0) return [newHeadline];
 
-      const headlineIndex = array.find(
-        (headline) => headline.id === newHeadline.id
+    setHeadlinesList((oldArray) => {
+      const headlineIndex = oldArray.find(
+        (object) => object.id === newHeadline.id
       );
-      if (headlineIndex) {
-        return array.map((headline) => {
-          if (headline.id === newHeadline.id) return newHeadline;
-          return headline;
-        });
-      } else {
-        array.push(newHeadline);
-        return array;
-      }
+      if (!headlineIndex) return [...oldArray, newHeadline];
+      oldArray[headlineIndex] = newHeadline;
+      return oldArray;
     });
   });
 
