@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 
 function InputRange({
-  inputValue,
   setInputValue,
   label = "Input label",
   name = "input-range",
@@ -27,8 +26,8 @@ function InputRange({
         min={min}
         max={max}
         step={step}
-        value={inputValue}
-        title={`${inputValue}${unit}`}
+        value={value}
+        title={`${value}${unit}`}
         onChange={updateValue}
       />
     </>

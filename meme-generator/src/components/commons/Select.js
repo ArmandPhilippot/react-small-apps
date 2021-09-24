@@ -2,14 +2,13 @@ import { useEffect } from "react";
 import Option from "./Option";
 
 function Select({
-  selectValue,
   setSelectValue,
   label = "Select an option:",
   options = [{ value: "Option name", name: "option-name" }],
   name = "select",
-  defaultValue = "",
+  value = "",
 }) {
-  useEffect(() => setSelectValue(defaultValue), [setSelectValue, defaultValue]);
+  useEffect(() => setSelectValue(value), [setSelectValue, value]);
 
   const optionsList = options.map(
     (option) => (
@@ -28,7 +27,7 @@ function Select({
       <select
         className="form__select"
         name={name}
-        value={selectValue}
+        value={value}
         onChange={updateValue}
       >
         {optionsList}

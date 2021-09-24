@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Fieldset from "../../commons/Fieldset";
 import Input from "../../commons/Input";
 import InputRange from "../../commons/InputRange";
@@ -21,10 +21,11 @@ function MemeFieldset({
     { value: "Center", name: "center" },
     { value: "Right", name: "right" },
   ];
-  const [inputTextValue, setInputTextValue] = useState("");
-  const [inputRangeValue, setInputRangeValue] = useState("");
-  const [selectXValue, setSelectXValue] = useState("");
-  const [selectYValue, setSelectYValue] = useState("");
+  const inputText = useRef(null);
+  const [inputTextValue, setInputTextValue] = useState("Edit here");
+  const [inputRangeValue, setInputRangeValue] = useState("100");
+  const [selectXValue, setSelectXValue] = useState(x);
+  const [selectYValue, setSelectYValue] = useState(y);
 
   useEffect(() => {
     const newHeadline = {
@@ -59,29 +60,27 @@ function MemeFieldset({
       </button>
       <div className="form__item">
         <Input
-          inputValue={inputTextValue}
+          ref={inputText}
+          value={inputTextValue}
           setInputValue={setInputTextValue}
           label="Enter a text:"
           type="text"
-          value="Edit here"
         />
       </div>
       <div className="form__item">
         <Select
-          selectValue={selectYValue}
           setSelectValue={setSelectYValue}
           label="Choose a vertical position:"
           options={verticalOptions}
-          defaultValue={y}
+          value={selectYValue}
         />
       </div>
       <div className="form__item">
         <Select
-          selectValue={selectXValue}
           setSelectValue={setSelectXValue}
           label="Choose a horizontal position:"
           options={horizontalOptions}
-          defaultValue={x}
+          value={selectXValue}
         />
       </div>
       <div className="form__item">
@@ -89,7 +88,7 @@ function MemeFieldset({
           inputValue={inputRangeValue}
           setInputValue={setInputRangeValue}
           label="Select a font size:"
-          value="100"
+          value={inputRangeValue}
           min="50"
           max="250"
           unit="%"
