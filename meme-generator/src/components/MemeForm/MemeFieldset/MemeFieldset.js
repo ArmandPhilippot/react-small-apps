@@ -1,10 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Fieldset from "../../commons/Fieldset";
 import Input from "../../commons/Input";
 import InputRange from "../../commons/InputRange";
 import Select from "../../commons/Select";
 
-function MemeFieldset({ y = "Top", x = "Center" }) {
+function MemeFieldset({
+  fieldsetId,
+  setHeadlinesList,
+  removeFieldset,
+  y = "Top",
+  x = "Center",
+}) {
   const verticalOptions = [
     { value: "Top", name: "top" },
     { value: "Middle", name: "middle" },
@@ -20,8 +26,37 @@ function MemeFieldset({ y = "Top", x = "Center" }) {
   const [selectXValue, setSelectXValue] = useState("");
   const [selectYValue, setSelectYValue] = useState("");
 
+  useEffect(() => {
+    const newHeadline = {
+      id: fieldsetId,
+      text: inputTextValue,
+      size: inputRangeValue,
+      x: selectXValue,
+      y: selectYValue,
+    };
+    setHeadlinesList((array) => {
+      if (array.length === 0) return [newHeadline];
+
+      const headlineIndex = array.find(
+        (headline) => headline.id === newHeadline.id
+      );
+      if (headlineIndex) {
+        return array.map((headline) => {
+          if (headline.id === newHeadline.id) return newHeadline;
+          return headline;
+        });
+      } else {
+        array.push(newHeadline);
+        return array;
+      }
+    });
+  });
+
   return (
-    <Fieldset legend="Text settings">
+    <Fieldset id={fieldsetId} legend={`Text settings ${fieldsetId}`}>
+      <button className="meme-form__delete" onClick={removeFieldset}>
+        Delete
+      </button>
       <div className="form__item">
         <Input
           inputValue={inputTextValue}

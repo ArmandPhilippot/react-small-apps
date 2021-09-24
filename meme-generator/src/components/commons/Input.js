@@ -3,27 +3,32 @@ import { useEffect, useRef } from "react";
 function Input({
   inputValue,
   setInputValue,
-  label = "Input label",
+  label = "",
   type = "text",
   name = "input-text",
   value = "",
 }) {
   const inputField = useRef(null);
-  useEffect(() => setInputValue(value), [setInputValue, value]);
+  useEffect(
+    () => setInputValue && setInputValue(value),
+    [setInputValue, value]
+  );
 
   const setFocus = () => {
     inputField.current.focus();
   };
 
   const updateValue = (e) => {
-    setInputValue(e.target.value);
+    setInputValue && setInputValue(e.target.value);
   };
 
   return (
     <>
-      <label className="form__label" onClick={setFocus}>
-        {label}
-      </label>
+      {label && (
+        <label className="form__label" onClick={setFocus}>
+          {label}
+        </label>
+      )}
       <input
         ref={inputField}
         className={`form__input form__input--${type}`}
