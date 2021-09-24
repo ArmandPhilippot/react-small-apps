@@ -47,8 +47,11 @@ body {
 
 .meme-preview__meme {
   margin: auto;
-  text-align: center;
   position: relative;
+}
+
+.meme-preview__form {
+  width: 100%;
 }
 
 .meme-preview__input {
@@ -57,7 +60,6 @@ body {
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
-  width: 100%;
 }
 
 .meme-preview__input:focus {
@@ -68,6 +70,7 @@ body {
   color: #fff;
   font-weight: 600;
   text-shadow: 3px 3px 0 #000;
+  padding: 0 0.5rem;
 }
 
 .meme-preview__headline--first {
