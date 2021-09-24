@@ -21,6 +21,9 @@ function MemeForm({ headlinesList, setHeadlinesList }) {
     const fieldsetIdParts = fieldset.id.split("-");
     const fieldsetId = Number(fieldsetIdParts[1]);
     setFieldsetList((array) => array.filter((item) => item.id !== fieldsetId));
+    setHeadlinesList((array) =>
+      array.filter((headline) => headline.id !== fieldsetId)
+    );
   };
 
   const addNewFieldset = () => {
