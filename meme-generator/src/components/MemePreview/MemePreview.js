@@ -7,7 +7,7 @@ async function fetchMemes() {
   return await result;
 }
 
-function MemePreview() {
+function MemePreview({ headlinesList }) {
   const [isFetched, setIsFetched] = useState(false);
   const [memes, setMemes] = useState([]);
 
@@ -35,7 +35,7 @@ function MemePreview() {
 
   return (
     <div className="meme-preview">
-      <Meme meme={selectedMeme} />
+      <Meme headlinesList={headlinesList} meme={selectedMeme} />
       <button className="meme-preview__random btn" onClick={handleOnClick}>
         Random image
       </button>

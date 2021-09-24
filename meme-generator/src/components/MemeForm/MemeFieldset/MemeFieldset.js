@@ -89,7 +89,10 @@ function MemeFieldset({
           inputValue={inputRangeValue}
           setInputValue={setInputRangeValue}
           label="Select a font size:"
-          value="20"
+          value="100"
+          min="50"
+          max="250"
+          unit="%"
         />
       </div>
     </Fieldset>

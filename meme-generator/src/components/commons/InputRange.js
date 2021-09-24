@@ -9,6 +9,7 @@ function InputRange({
   min = "5",
   max = "50",
   step = "1",
+  unit = "px",
 }) {
   useEffect(() => setInputValue(value), [setInputValue, value]);
 
@@ -27,7 +28,7 @@ function InputRange({
         max={max}
         step={step}
         value={inputValue}
-        title={`${inputValue}px`}
+        title={`${inputValue}${unit}`}
         onChange={updateValue}
       />
     </>
