@@ -37,3 +37,33 @@ body {
   font-size: 0.9rem;
   padding: 2rem 0;
 }
+
+.form__input {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.meme-preview {
+  font-size: 2rem;
+  position: relative;
+}
+
+.meme-preview__headline {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #fff;
+  font-weight: 600;
+  text-shadow: 3px 3px 2px #000;
+  padding: 0 0.5rem;
+}
+
+.meme-preview .form__input {
+  background: transparent;
+  border: none;
+}
+
+.meme-preview .form__input:focus {
+  outline: none;
+}

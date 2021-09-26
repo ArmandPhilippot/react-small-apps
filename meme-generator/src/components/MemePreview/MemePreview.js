@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Button from "../commons/Button";
+import Headline from "./Headline/Headline";
 
 async function fetchMemes() {
   const response = await fetch("https://api.imgflip.com/get_memes");
@@ -38,6 +39,7 @@ function MemePreview() {
         ) : (
           "Loading..."
         )}
+        <Headline />
       </div>
       <Button body="Random image" modifier="random" onClick={getRandomMeme} />
     </div>
