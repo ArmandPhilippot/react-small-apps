@@ -29,7 +29,7 @@ body {
 
 .main {
   flex: 1;
-  margin: 0 0 2rem;
+  margin: 2rem 0;
 }
 
 .footer {
