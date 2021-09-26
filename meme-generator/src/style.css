@@ -79,13 +79,22 @@ body {
 
 .meme-preview {
   font-size: 2rem;
+}
+
+.meme-preview__meme {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: repeat(3, minmax(0, 1fr));
   position: relative;
 }
 
+.meme-preview__image {
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
+  width: 100%;
+}
+
 .meme-preview__headline {
-  position: absolute;
-  top: 0;
-  left: 0;
   color: #fff;
   font-weight: 600;
   text-shadow: 3px 3px 2px #000;
@@ -95,6 +104,8 @@ body {
 .meme-preview .form__input {
   background: transparent;
   border: none;
+  text-align: inherit;
+  width: 100%;
 }
 
 .meme-preview .form__input:focus {

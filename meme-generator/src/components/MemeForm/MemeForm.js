@@ -1,17 +1,21 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Fieldset from "../commons/Fieldset";
 import Form from "../commons/Form";
 import Input from "../commons/Input";
 import InputRange from "../commons/InputRange";
 import Select from "../commons/Select";
 
-function MemeForm() {
+function MemeForm({ headlines, setHeadlines }) {
   const horizontalOptions = ["Left", "Right", "Center"];
   const verticalOptions = ["Top", "Bottom", "Middle"];
-  const [inputTextValue, setInputTextValue] = useState("Edit here...");
-  const [inputRangeValue, setInputRangeValue] = useState(100);
-  const [selectX, setSelectX] = useState(horizontalOptions[0]);
-  const [selectY, setSelectY] = useState(verticalOptions[0]);
+  const [inputTextValue, setInputTextValue] = useState(headlines.text);
+  const [inputRangeValue, setInputRangeValue] = useState(headlines.fontSize);
+  const [selectX, setSelectX] = useState(headlines.xPos);
+  const [selectY, setSelectY] = useState(headlines.yPos);
+
+  useEffect(() => {
+    setInputTextValue(headlines.text);
+  }, [headlines.text]);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -23,7 +27,7 @@ function MemeForm() {
         setInputTextValue(e.target.value);
         break;
       case "inputRange":
-        setInputRangeValue(e.target.value);
+        setInputRangeValue(Number(e.target.value));
         break;
       case "selectX":
         setSelectX(e.target.value);
@@ -35,6 +39,25 @@ function MemeForm() {
         break;
     }
   };
+
+  useEffect(() => {
+    setHeadlines((previous) => {
+      return {
+        ...previous,
+        text: inputTextValue,
+        fontSize: `${inputRangeValue}${headlines.fontUnit}`,
+        xPos: selectX,
+        yPos: selectY,
+      };
+    });
+  }, [
+    setHeadlines,
+    inputTextValue,
+    inputRangeValue,
+    headlines.fontUnit,
+    selectX,
+    selectY,
+  ]);
 
   return (
     <div className="meme-form">
@@ -55,6 +78,7 @@ function MemeForm() {
               id="inputRange"
               name="inputRange"
               value={inputRangeValue}
+              unit={headlines.fontUnit}
               onChangeHandler={onChange}
             />
           </div>

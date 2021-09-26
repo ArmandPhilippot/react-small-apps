@@ -8,7 +8,7 @@ async function fetchMemes() {
   return await result;
 }
 
-function MemePreview() {
+function MemePreview({ headlines, setHeadlines }) {
   const [memesList, setMemesList] = useState([]);
   const [isFetched, setIsFetched] = useState(false);
   useEffect(() => {
@@ -39,7 +39,7 @@ function MemePreview() {
         ) : (
           "Loading..."
         )}
-        <Headline />
+        <Headline headlines={headlines} setHeadlines={setHeadlines} />
       </div>
       <Button body="Random image" modifier="random" onClick={getRandomMeme} />
     </div>
