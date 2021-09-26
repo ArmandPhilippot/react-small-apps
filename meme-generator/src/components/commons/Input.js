@@ -2,6 +2,9 @@ import { forwardRef } from "react";
 
 function Input(
   {
+    label,
+    id,
+    name,
     type = "text",
     value,
     onChangeHandler,
@@ -13,14 +16,25 @@ function Input(
   const classNames = `form__input ${additionalClasses}`;
 
   return (
-    <input
-      ref={ref}
-      type={type}
-      value={value}
-      onChange={onChangeHandler}
-      onBlur={onBlurHandler}
-      className={classNames}
-    />
+    <>
+      {label ? (
+        <label className="form__label" htmlFor={id}>
+          {label}
+        </label>
+      ) : (
+        ""
+      )}
+      <input
+        id={id}
+        name={name}
+        ref={ref}
+        type={type}
+        value={value}
+        onChange={onChangeHandler}
+        onBlur={onBlurHandler}
+        className={classNames}
+      />
+    </>
   );
 }
 

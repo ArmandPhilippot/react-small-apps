@@ -29,6 +29,9 @@ body {
 
 .main {
   flex: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(0, 500px));
+  gap: 2rem;
   margin: 2rem 0;
 }
 
@@ -38,10 +41,40 @@ body {
   padding: 2rem 0;
 }
 
+.form__fieldset {
+  padding: 0 1rem 1rem;
+}
+
+.form__legend {
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 0.5rem;
+}
+
+.form__item:not(:last-child) {
+  margin-bottom: 0.5rem;
+}
+
+.form__label {
+  display: block;
+  cursor: pointer;
+}
+
 .form__input {
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
+  padding: 0.5rem 0.8rem;
+}
+
+.form__input--range {
+  padding: 0.5rem 0.8rem 0;
+}
+
+.form__select {
+  width: 100%;
+  padding: 0.5rem 0.8rem;
 }
 
 .meme-preview {
