@@ -46,6 +46,12 @@ body {
   padding: 0.5rem 1rem;
 }
 
+.btn--delete {
+  background: rgb(255, 193, 193);
+  border: 1px solid rgb(141, 68, 68);
+  font-weight: 500;
+}
+
 .form__fieldset {
   padding: 0 1rem 1rem;
 }
@@ -87,6 +93,17 @@ body {
   flex-flow: row wrap;
   align-items: flex-start;
   gap: 1rem;
+}
+
+.meme-form .form__fieldset {
+  position: relative;
+}
+
+.meme-form .btn--delete {
+  position: absolute;
+  top: -1.5rem;
+  right: 0;
+  padding: 0.4rem;
 }
 
 .meme-form .btn--add {

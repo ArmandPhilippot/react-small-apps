@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Button from "../../commons/Button";
 import Fieldset from "../../commons/Fieldset";
 import Input from "../../commons/Input";
 import InputRange from "../../commons/InputRange";
@@ -49,8 +50,13 @@ function MemeFieldset({ headline, setHeadline, xOptions, yOptions }) {
     }
   };
 
+  const onClick = (e) => {
+    setHeadline((previous) => previous.filter((object) => object.id !== id));
+  };
+
   return (
     <Fieldset id={id} legend={legend}>
+      <Button body="Delete" modifier="delete" onClick={onClick} />
       <div className="form__item">
         <Input
           label="Enter your text:"
