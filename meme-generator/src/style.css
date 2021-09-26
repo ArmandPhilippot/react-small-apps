@@ -30,7 +30,7 @@ body {
 .main {
   flex: 1;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(0, 500px));
+  grid-template-columns: repeat(auto-fill, minmax(0, 550px));
   gap: 2rem;
   margin: 2rem 0;
 }
@@ -39,6 +39,11 @@ body {
   text-align: center;
   font-size: 0.9rem;
   padding: 2rem 0;
+}
+
+.btn {
+  display: block;
+  padding: 0.5rem 1rem;
 }
 
 .form__fieldset {
@@ -77,6 +82,18 @@ body {
   padding: 0.5rem 0.8rem;
 }
 
+.meme-form .form {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.meme-form .btn--add {
+  align-self: center;
+  margin: auto;
+}
+
 .meme-preview {
   font-size: 2rem;
 }
@@ -110,4 +127,8 @@ body {
 
 .meme-preview .form__input:focus {
   outline: none;
+}
+
+.meme-preview .btn--random {
+  margin: 2rem auto;
 }

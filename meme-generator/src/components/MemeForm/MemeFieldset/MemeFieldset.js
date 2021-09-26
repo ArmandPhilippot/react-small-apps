@@ -4,10 +4,8 @@ import Input from "../../commons/Input";
 import InputRange from "../../commons/InputRange";
 import Select from "../../commons/Select";
 
-function MemeFieldset({ headline, setHeadline }) {
-  const { id, text, fontSize, fontUnit, xPos, yPos } = headline;
-  const horizontalOptions = ["Left", "Right", "Center"];
-  const verticalOptions = ["Top", "Bottom", "Middle"];
+function MemeFieldset({ headline, setHeadline, xOptions, yOptions }) {
+  const { id, legend, text, fontSize, fontUnit, xPos, yPos } = headline;
   const [inputTextValue, setInputTextValue] = useState(text);
   const [inputRangeValue, setInputRangeValue] = useState(fontSize);
   const [selectX, setSelectX] = useState(xPos);
@@ -52,7 +50,7 @@ function MemeFieldset({ headline, setHeadline }) {
   };
 
   return (
-    <Fieldset id={id} legend="Text settings">
+    <Fieldset id={id} legend={legend}>
       <div className="form__item">
         <Input
           label="Enter your text:"
@@ -77,7 +75,7 @@ function MemeFieldset({ headline, setHeadline }) {
           label="Select the vertical position:"
           id="selectY"
           name="selectY"
-          options={verticalOptions}
+          options={yOptions}
           value={selectY}
           onChangeHandler={onChange}
         />
@@ -87,7 +85,7 @@ function MemeFieldset({ headline, setHeadline }) {
           label="Select the horizontal position:"
           id="selectX"
           name="selectX"
-          options={horizontalOptions}
+          options={xOptions}
           value={selectX}
           onChangeHandler={onChange}
         />
