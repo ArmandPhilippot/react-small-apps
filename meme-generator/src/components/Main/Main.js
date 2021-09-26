@@ -4,13 +4,14 @@ import MemePreview from "../MemePreview/MemePreview";
 
 function Main() {
   const defaultHeadline = {
+    id: 0,
     text: "Edit here...",
     fontSize: 100,
     fontUnit: "%",
     xPos: "Left",
     yPos: "Top",
   };
-  const [headlines, setHeadlines] = useState(defaultHeadline);
+  const [headlines, setHeadlines] = useState([defaultHeadline]);
 
   return (
     <main className="main">

@@ -27,6 +27,18 @@ function MemePreview({ headlines, setHeadlines }) {
     setSelectedMeme(memesList[randomIndex]);
   };
 
+  const headlinesList = headlines.map((headline) => (
+    <Headline
+      key={headline.id}
+      id={headline.id}
+      text={headline.text}
+      fontSize={`${headline.fontSize}${headline.fontUnit}`}
+      xPos={headline.xPos}
+      yPos={headline.yPos}
+      setHeadlines={setHeadlines}
+    />
+  ));
+
   return (
     <div className="meme-preview">
       <div className="meme-preview__meme">
@@ -39,7 +51,7 @@ function MemePreview({ headlines, setHeadlines }) {
         ) : (
           "Loading..."
         )}
-        <Headline headlines={headlines} setHeadlines={setHeadlines} />
+        {headlinesList}
       </div>
       <Button body="Random image" modifier="random" onClick={getRandomMeme} />
     </div>

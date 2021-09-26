@@ -2,18 +2,21 @@ import { useEffect, useRef, useState } from "react";
 import Form from "../../commons/Form";
 import Input from "../../commons/Input";
 
-function Headline({ headlines, setHeadlines }) {
+function Headline({ id, text, fontSize, xPos, yPos, setHeadlines }) {
   const inputRef = useRef(null);
-  const [inputValue, setInputValue] = useState(headlines.text);
   const [isEditing, setIsEditing] = useState(false);
-
   useEffect(() => {
-    setInputValue(headlines.text);
-  }, [headlines.text]);
+    isEditing && inputRef.current.focus();
+  });
+
+  const [inputValue, setInputValue] = useState(text);
+  useEffect(() => {
+    setInputValue(text);
+  }, [text]);
 
   const getXPos = () => {
     let styles = {};
-    switch (headlines.xPos) {
+    switch (xPos) {
       case "Left":
         styles = { gridColumn: 1, textAlign: "left" };
         break;
@@ -36,7 +39,7 @@ function Headline({ headlines, setHeadlines }) {
 
   const getYPos = () => {
     let styles = {};
-    switch (headlines.yPos) {
+    switch (yPos) {
       case "Top":
         styles = { gridRow: 1 };
         break;
@@ -53,7 +56,7 @@ function Headline({ headlines, setHeadlines }) {
   };
 
   const styles = {
-    fontSize: headlines.fontSize,
+    fontSize: fontSize,
     ...getYPos(),
     ...getXPos(),
   };
@@ -69,17 +72,25 @@ function Headline({ headlines, setHeadlines }) {
 
   useEffect(() => {
     setHeadlines((previous) => {
-      return { ...previous, text: inputValue };
+      return previous.map((headline) => {
+        if (headline.id !== id) return headline;
+        return { ...headline, text: inputValue };
+      });
     });
-  }, [setHeadlines, inputValue]);
+  }, [setHeadlines, id, inputValue]);
+
+  useEffect(() => {
+    setHeadlines((previous) => {
+      return previous.map((headline) => {
+        if (headline.id !== id) return headline;
+        return { ...headline, text: inputValue };
+      });
+    });
+  }, [setHeadlines, id, inputValue]);
 
   const onBlur = () => {
     setIsEditing(false);
   };
-
-  useEffect(() => {
-    isEditing && inputRef.current.focus();
-  });
 
   return (
     <>
