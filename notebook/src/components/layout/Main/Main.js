@@ -1,7 +1,7 @@
 import "./Main.css";
 
-function Main() {
-  return <main className="main">Notebook page.</main>;
+function Main({ children }) {
+  return <main className="main">{children}</main>;
 }
 
 export default Main;

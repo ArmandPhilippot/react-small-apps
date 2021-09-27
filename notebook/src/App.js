@@ -1,11 +1,13 @@
 import "./App.css";
-import { Footer, Header, Main } from "./components/layout";
+import { Footer, Header, Main, Notebook } from "./components/layout";
 
 function App() {
   return (
     <>
       <Header />
-      <Main />
+      <Main>
+        <Notebook />
+      </Main>
       <Footer />
     </>
   );

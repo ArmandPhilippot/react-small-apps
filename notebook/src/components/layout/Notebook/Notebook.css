@@ -1,0 +1,23 @@
+.notebook {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(0, 400px));
+}
+
+.notebook__page {
+  position: relative;
+  border: 1px solid #000;
+  padding: 1rem;
+}
+
+.notebook__page:nth-child(2) {
+  left: -1px;
+}
+
+.notebook__nav .list {
+  display: flex;
+  list-style-type: none;
+  gap: 1rem;
+  margin: 0;
+  padding: 1rem 0;
+}
