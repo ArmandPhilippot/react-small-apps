@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Button, List } from "../../commons";
 
 function NotebookNav({ pages, setPages }) {
@@ -11,9 +12,10 @@ function NotebookNav({ pages, setPages }) {
   };
 
   const links = pages.map((page) => {
+    const url = `/${page.id}`;
     return {
       id: page.id,
-      body: <a href={page.url}>{page.title}</a>,
+      body: <Link to={url}>{page.title}</Link>,
     };
   });
 
@@ -24,6 +26,7 @@ function NotebookNav({ pages, setPages }) {
 
   return (
     <nav className="notebook__nav">
+      <Link to="/">Back at the beginning</Link>
       <List data={links} />
       <Button body="New page" onClickHandler={addNewPage} />
     </nav>

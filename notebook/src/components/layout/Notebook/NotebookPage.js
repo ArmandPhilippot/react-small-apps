@@ -1,5 +1,8 @@
-function NotebookPage({ title }) {
-  return <div className="notebook__page">{title}</div>;
+import { useParams } from "react-router-dom";
+
+function NotebookPage() {
+  const { id } = useParams();
+  return <div className="notebook__page">Page {id}</div>;
 }
 
 export default NotebookPage;
