@@ -1,0 +1,8 @@
+.app {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 2rem;
+  min-height: 100vh;
+  width: min(calc(100vw - 2rem), 800px);
+  margin: auto;
+}
