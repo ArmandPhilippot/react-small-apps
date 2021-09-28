@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import NotebookNav from "./NotebookNav";
 import NotebookPage from "./NotebookPage";
 import "./Notebook.css";
@@ -12,6 +12,10 @@ function Notebook() {
     { id: pageId, body: "", title: "My notebook", url: "/" },
   ]);
   const [currentPage, setCurrentPage] = useState(pages[0]);
+
+  useEffect(() => {
+    if (currentPage) document.title = `Notebook - ${currentPage.title}`;
+  });
 
   const addNewPage = useCallback(() => {
     pageId++;
