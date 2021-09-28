@@ -1,34 +1,55 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import { Button, List } from "../../commons";
+import { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { List } from "../../commons";
 
-function NotebookNav({ pages, setPages }) {
-  const [pageId, setPageId] = useState(1);
+function NotebookNav({ currentPage, setCurrentPage, pages, addNewPage }) {
+  const location = useLocation();
 
-  const newPage = {
-    id: pageId,
-    title: `Page ${pageId}`,
-    url: "#",
-  };
+  const [nextPage, setNextPage] = useState({});
+  const [prevPage, setPrevPage] = useState({});
+
+  useEffect(() => {
+    if (!pages[currentPage.id + 1]) addNewPage();
+    setNextPage(pages[currentPage.id + 1]);
+    setPrevPage(() =>
+      pages[currentPage.id - 1] ? pages[currentPage.id - 1] : null
+    );
+  }, [pages, currentPage.id, addNewPage]);
+
+  useEffect(() => {
+    setCurrentPage(pages.find((page) => page.id === location.state.id));
+  });
+
+  const isCoverPage = location.pathname === "/";
 
   const links = pages.map((page) => {
-    const url = `/${page.id}`;
+    const url = `/page/${page.id}`;
     return {
       id: page.id,
-      body: <Link to={url}>{page.title}</Link>,
+      body: (
+        <Link to={{ pathname: url, state: { id: page.id } }}>{page.title}</Link>
+      ),
     };
   });
 
-  const addNewPage = () => {
-    setPageId((previous) => previous + 1);
-    setPages((previous) => [...previous, newPage]);
-  };
-
   return (
     <nav className="notebook__nav">
-      <Link to="/">Back at the beginning</Link>
+      {!isCoverPage && (
+        <Link to={{ pathname: "/", state: { id: 0 } }}>
+          Back at the beginning
+        </Link>
+      )}
+      {prevPage && (
+        <Link to={{ pathname: prevPage.url, state: { id: prevPage.id } }}>
+          Previous page
+        </Link>
+      )}
+      {nextPage && (
+        <Link to={{ pathname: nextPage.url, state: { id: nextPage.id } }}>
+          Next page
+        </Link>
+      )}
       <List data={links} />
-      <Button body="New page" onClickHandler={addNewPage} />
     </nav>
   );
 }
