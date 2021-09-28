@@ -4,6 +4,7 @@ import NotebookPage from "./NotebookPage";
 import "./Notebook.css";
 import { Redirect, Route, Switch } from "react-router-dom";
 import NotebookCover from "./NotebookCover";
+import NoMatch from "../NoMatch/NoMatch";
 
 function Notebook() {
   let pageId = 0;
@@ -23,6 +24,11 @@ function Notebook() {
     setPages((previous) => [...previous, newPage]);
   }, [pageId]);
 
+  const isPageExists = (id) => {
+    const pageIndex = pages.findIndex((page) => page.id === id);
+    return pageIndex === -1 ? false : true;
+  };
+
   return (
     <div className="notebook">
       <Switch>
@@ -31,11 +37,32 @@ function Notebook() {
           to={{ pathname: "/", state: pages[0] }}
           data={currentPage}
         />
-        <Route exact strict path="/page/:number">
-          <NotebookPage data={currentPage} />
-        </Route>
+        <Route
+          exact
+          strict
+          path="/page/:number"
+          render={(route) => {
+            const requestedPageId = parseInt(route.match.params.number, 10);
+            if (isPageExists(Number(requestedPageId)))
+              return <NotebookPage data={currentPage} />;
+            return (
+              <Redirect
+                to={{
+                  pathname: "/404",
+                  state: { from: route.match.url },
+                }}
+              />
+            );
+          }}
+        />
         <Route exact strict path="/">
-          <NotebookCover data={currentPage} />
+          <NotebookCover setCurrentPage={setCurrentPage} data={currentPage} />
+        </Route>
+        <Route exact strict path="/404">
+          <NoMatch setCurrentPage={setCurrentPage} />
+        </Route>
+        <Route path="*">
+          <Redirect to="/404" />
         </Route>
       </Switch>
       <NotebookNav
