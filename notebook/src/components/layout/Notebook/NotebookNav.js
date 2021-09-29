@@ -1,9 +1,11 @@
 import { useCallback, useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { List } from "../../commons";
+import { Button } from "../../commons";
+import NotebookJumpTo from "./NotebookJumpTo";
 
 function NotebookNav({ currentPage, setCurrentPage, pages, addNewPage }) {
   const location = useLocation();
+  const [isNavOpened, setIsNavOpened] = useState(false);
 
   const [nextPage, setNextPage] = useState({});
   const [prevPage, setPrevPage] = useState({});
@@ -52,12 +54,16 @@ function NotebookNav({ currentPage, setCurrentPage, pages, addNewPage }) {
           Previous page
         </Link>
       )}
+      <Button
+        body="Jump to"
+        onClickHandler={() => setIsNavOpened(!isNavOpened)}
+      />
+      {isNavOpened && <NotebookJumpTo linksList={links} />}
       {nextPage && (
         <Link to={{ pathname: nextPage.url, state: { id: nextPage.id } }}>
           Next page
         </Link>
       )}
-      <List data={links} />
     </nav>
   );
 }
