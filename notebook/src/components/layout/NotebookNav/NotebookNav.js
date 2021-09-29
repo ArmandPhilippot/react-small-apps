@@ -33,23 +33,25 @@ function NotebookNav({ currentPage, setCurrentPage, pages, addNewPage }) {
       setCurrentPage(pages.find((page) => page.id === location.state.id));
   });
 
-  const links = pages.map((page) => {
-    const url = `/page/${page.id}`;
-    return {
-      id: page.id,
-      body: (
-        <NavLink
-          activeClassName="list__link--current"
-          className="list__link"
-          aria-current="page"
-          exact
-          to={{ pathname: url, state: { id: page.id } }}
-        >
-          {page.title}
-        </NavLink>
-      ),
-    };
-  });
+  const links = pages
+    .map((page) => {
+      const url = `/page/${page.id}`;
+      return {
+        id: page.id,
+        body: (
+          <NavLink
+            activeClassName="list__link--current"
+            className="list__link"
+            aria-current="page"
+            exact
+            to={{ pathname: url, state: { id: page.id } }}
+          >
+            {page.title}
+          </NavLink>
+        ),
+      };
+    })
+    .filter((page) => page.id !== 0);
 
   return (
     <nav className="notebook-nav">
