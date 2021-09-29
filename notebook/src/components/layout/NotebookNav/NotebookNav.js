@@ -1,7 +1,8 @@
 import { useCallback, useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "../../commons";
-import NotebookJumpTo from "./NotebookJumpTo";
+import NotebookNavJump from "./NotebookNavJump";
+import "./NotebookNav.css";
 
 function NotebookNav({ currentPage, setCurrentPage, pages, addNewPage }) {
   const location = useLocation();
@@ -43,7 +44,7 @@ function NotebookNav({ currentPage, setCurrentPage, pages, addNewPage }) {
   });
 
   return (
-    <nav className="notebook__nav">
+    <nav className="notebook-nav">
       {!isCoverPage(location.pathname === "/") && (
         <Link to={{ pathname: "/", state: { id: 0 } }}>
           Back at the beginning
@@ -58,7 +59,7 @@ function NotebookNav({ currentPage, setCurrentPage, pages, addNewPage }) {
         body="Jump to"
         onClickHandler={() => setIsNavOpened(!isNavOpened)}
       />
-      {isNavOpened && <NotebookJumpTo linksList={links} />}
+      {isNavOpened && <NotebookNavJump linksList={links} />}
       {nextPage && (
         <Link to={{ pathname: nextPage.url, state: { id: nextPage.id } }}>
           Next page

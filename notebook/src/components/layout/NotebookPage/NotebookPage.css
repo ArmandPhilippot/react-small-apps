@@ -1,0 +1,36 @@
+.notebook-page {
+  display: flex;
+  flex-flow: column nowrap;
+  min-height: 500px;
+  padding: clamp(1rem, 3vw, 2rem) 0;
+  border: 1px solid #000;
+}
+
+.notebook-page__header,
+.notebook-page__footer,
+.notebook-page__content-wrapper {
+  padding: 0 clamp(1rem, 3vw, 3rem);
+}
+
+.notebook-page__title {
+  margin: 0;
+}
+
+.notebook-page__content {
+  flex: 1;
+  display: flex;
+  margin: clamp(1rem, 3vw, 2rem) 0;
+}
+
+.notebook-page__content-wrapper {
+  flex: 1;
+}
+
+.notebook-page__content-wrapper:focus {
+  border: none;
+  outline: none;
+}
+
+.notebook-page__footer {
+  text-align: right;
+}

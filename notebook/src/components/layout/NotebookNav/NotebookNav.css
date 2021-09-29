@@ -1,0 +1,7 @@
+.notebook__nav .list {
+  display: flex;
+  list-style-type: none;
+  gap: 1rem;
+  margin: 0;
+  padding: 1rem 0;
+}

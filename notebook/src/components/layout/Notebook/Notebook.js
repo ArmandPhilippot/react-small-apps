@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useState } from "react";
-import NotebookNav from "./NotebookNav";
-import NotebookPage from "./NotebookPage";
+import NotebookNav from "../NotebookNav/NotebookNav";
+import NotebookPage from "../NotebookPage/NotebookPage";
 import "./Notebook.css";
 import { Redirect, Route, Switch } from "react-router-dom";
-import NotebookCover from "./NotebookCover";
+import NotebookCover from "../NotebookCover/NotebookCover";
 import NoMatch from "../NoMatch/NoMatch";
 
 function Notebook() {
@@ -34,7 +34,7 @@ function Notebook() {
   };
 
   return (
-    <div className="notebook">
+    <>
       <Switch>
         <Redirect
           from="/page/0"
@@ -75,7 +75,7 @@ function Notebook() {
         pages={pages}
         addNewPage={addNewPage}
       />
-    </div>
+    </>
   );
 }
 

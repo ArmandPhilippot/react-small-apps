@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import "./NotebookCover.css";
 
 function NotebookCover({ setCurrentPage, data }) {
   const { title } = data;
@@ -12,7 +13,7 @@ function NotebookCover({ setCurrentPage, data }) {
     });
   }, [setCurrentPage]);
 
-  return <div className="notebook__page notebook__page--cover">{title}</div>;
+  return <div className="notebook-page notebook-page--cover">{title}</div>;
 }
 
 export default NotebookCover;
