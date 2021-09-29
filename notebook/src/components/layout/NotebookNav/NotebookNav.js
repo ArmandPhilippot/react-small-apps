@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { Button } from "../../commons";
 import NotebookNavJump from "./NotebookNavJump";
 import "./NotebookNav.css";
@@ -38,7 +38,15 @@ function NotebookNav({ currentPage, setCurrentPage, pages, addNewPage }) {
     return {
       id: page.id,
       body: (
-        <Link to={{ pathname: url, state: { id: page.id } }}>{page.title}</Link>
+        <NavLink
+          activeClassName="list__link--current"
+          className="list__link"
+          aria-current="page"
+          exact
+          to={{ pathname: url, state: { id: page.id } }}
+        >
+          {page.title}
+        </NavLink>
       ),
     };
   });
@@ -46,22 +54,35 @@ function NotebookNav({ currentPage, setCurrentPage, pages, addNewPage }) {
   return (
     <nav className="notebook-nav">
       {!isCoverPage(location.pathname === "/") && (
-        <Link to={{ pathname: "/", state: { id: 0 } }}>
-          Back at the beginning
+        <Link
+          className="notebook-nav__link"
+          to={{ pathname: "/", state: { id: 0 } }}
+          onFocus={() => setIsNavOpened(false)}
+        >
+          Back to cover
         </Link>
       )}
       {prevPage && (
-        <Link to={{ pathname: prevPage.url, state: { id: prevPage.id } }}>
+        <Link
+          className="notebook-nav__link"
+          to={{ pathname: prevPage.url, state: { id: prevPage.id } }}
+          onFocus={() => setIsNavOpened(false)}
+        >
           Previous page
         </Link>
       )}
       <Button
+        additionalClassnames="notebook-nav__link"
         body="Jump to"
         onClickHandler={() => setIsNavOpened(!isNavOpened)}
       />
       {isNavOpened && <NotebookNavJump linksList={links} />}
       {nextPage && (
-        <Link to={{ pathname: nextPage.url, state: { id: nextPage.id } }}>
+        <Link
+          className="notebook-nav__link"
+          to={{ pathname: nextPage.url, state: { id: nextPage.id } }}
+          onFocus={() => setIsNavOpened(false)}
+        >
           Next page
         </Link>
       )}
