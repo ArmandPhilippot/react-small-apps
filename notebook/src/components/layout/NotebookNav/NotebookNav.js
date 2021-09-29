@@ -26,12 +26,12 @@ function NotebookNav({ currentPage, setCurrentPage, pages, addNewPage }) {
         pages[currentPage.id - 1] ? pages[currentPage.id - 1] : null
       );
     }
-  }, [pages, currentPage, addNewPage, isNotebook, location]);
+  }, [pages, currentPage.id, addNewPage, isNotebook, location]);
 
   useEffect(() => {
     isNotebookPage(location.pathname) &&
       setCurrentPage(pages.find((page) => page.id === location.state.id));
-  });
+  }, [location, pages, setCurrentPage]);
 
   const links = pages
     .map((page) => {

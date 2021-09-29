@@ -17,6 +17,17 @@ function Notebook() {
     if (currentPage) document.title = `Notebook - ${currentPage.title}`;
   });
 
+  useEffect(() => {
+    setPages((previous) =>
+      previous.map((page) => {
+        if (page.id !== currentPage.id) return page;
+        return { ...page, body: currentPage.body };
+      })
+    );
+  }, [currentPage.body, currentPage.id]);
+
+  console.log(pages);
+
   const addNewPage = useCallback(() => {
     pageId++;
     const newPage = {
@@ -48,7 +59,9 @@ function Notebook() {
           render={(route) => {
             const requestedPageId = parseInt(route.match.params.number, 10);
             if (isPageExists(Number(requestedPageId)))
-              return <NotebookPage data={currentPage} />;
+              return (
+                <NotebookPage data={currentPage} setData={setCurrentPage} />
+              );
             return (
               <Redirect
                 to={{

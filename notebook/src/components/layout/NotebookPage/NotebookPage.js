@@ -1,11 +1,15 @@
 import { useEffect, useRef, useState } from "react";
 import "./NotebookPage.css";
 
-function NotebookPage({ data }) {
+function NotebookPage({ data, setData }) {
   const { id, body, title } = data;
   const textareaRef = useRef(null);
-  const [textareaValue, setTextareaValue] = useState(body);
+  const [textareaValue, setTextareaValue] = useState("");
   const [isEditable, setIsEditable] = useState(false);
+
+  useEffect(() => {
+    setTextareaValue(body);
+  }, [body]);
 
   useEffect(() => {
     textareaRef.current && textareaRef.current.focus();
@@ -16,7 +20,9 @@ function NotebookPage({ data }) {
   };
 
   const handleOnChange = (e) => {
-    setTextareaValue(e.target.value);
+    setData((previous) => {
+      return { ...previous, body: e.target.value };
+    });
   };
 
   return (
