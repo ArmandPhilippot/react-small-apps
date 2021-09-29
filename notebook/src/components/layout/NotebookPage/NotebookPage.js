@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import TextArea from "../../commons/FormElements/TextArea";
 import "./NotebookPage.css";
 
 function NotebookPage({ data, setData }) {
@@ -25,6 +26,10 @@ function NotebookPage({ data, setData }) {
     });
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+
   return (
     <article className="notebook-page">
       <header className="notebook-page__header">
@@ -32,13 +37,19 @@ function NotebookPage({ data, setData }) {
       </header>
       <div className="notebook-page__content">
         {isEditable ? (
-          <textarea
-            ref={textareaRef}
+          <form
+            action="#"
+            method="post"
             className="notebook-page__content-wrapper"
-            value={textareaValue}
-            onChange={handleOnChange}
-            onBlur={handleEditable}
-          />
+            onSubmit={handleSubmit}
+          >
+            <TextArea
+              ref={textareaRef}
+              value={textareaValue}
+              onChangeHandler={handleOnChange}
+              onBlurHandler={handleEditable}
+            />
+          </form>
         ) : (
           <div
             className="notebook-page__content-wrapper"

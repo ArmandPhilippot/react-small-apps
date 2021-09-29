@@ -13,7 +13,7 @@
 }
 
 .notebook-page__title {
-  margin: 0;
+  margin: 1rem 0;
 }
 
 .notebook-page__content {
@@ -24,11 +24,20 @@
 
 .notebook-page__content-wrapper {
   flex: 1;
+  white-space: pre-wrap;
 }
 
-.notebook-page__content-wrapper:focus {
+.notebook-page__content-wrapper .form__textarea {
   border: none;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  padding: 0;
+}
+
+.notebook-page__content-wrapper .form__textarea:focus {
   outline: none;
+  resize: none;
 }
 
 .notebook-page__footer {

@@ -26,8 +26,6 @@ function Notebook() {
     );
   }, [currentPage.body, currentPage.id]);
 
-  console.log(pages);
-
   const addNewPage = useCallback(() => {
     pageId++;
     const newPage = {
