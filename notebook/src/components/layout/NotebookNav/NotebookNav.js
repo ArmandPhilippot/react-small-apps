@@ -54,7 +54,10 @@ function NotebookNav({ currentPage, setCurrentPage, pages, addNewPage }) {
     .filter((page) => page.id !== 0);
 
   return (
-    <nav className="notebook-nav">
+    <nav
+      className="notebook-nav"
+      onBlur={(e) => !e.relatedTarget && setIsNavOpened(false)}
+    >
       {!isCoverPage(location.pathname === "/") && (
         <Link
           className="notebook-nav__link"
