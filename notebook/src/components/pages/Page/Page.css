@@ -8,7 +8,7 @@
 
 .notebook-page__header,
 .notebook-page__footer,
-.notebook-page__content-wrapper {
+.notebook-page__content {
   padding: 0 clamp(1rem, 3vw, 3rem);
 }
 
@@ -19,15 +19,11 @@
 .notebook-page__content {
   flex: 1;
   display: flex;
-  margin: clamp(1rem, 3vw, 2rem) 0;
-}
-
-.notebook-page__content-wrapper {
-  flex: 1;
+  margin: clamp(1rem, 3vw, 2rem) 0 clamp(2rem, 3vw, 3rem);
   white-space: pre-wrap;
 }
 
-.notebook-page__content-wrapper .form__textarea {
+.notebook-page__content .form__textarea {
   border: none;
   width: 100%;
   height: 100%;
@@ -35,7 +31,7 @@
   padding: 0;
 }
 
-.notebook-page__content-wrapper .form__textarea:focus {
+.notebook-page__content .form__textarea:focus {
   outline: none;
   resize: none;
 }

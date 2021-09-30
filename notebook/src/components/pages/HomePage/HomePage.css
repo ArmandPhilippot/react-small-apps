@@ -4,3 +4,7 @@
   font-weight: 600;
   text-align: center;
 }
+
+.notebook-page--cover .notebook-page__content {
+  flex: 0;
+}
