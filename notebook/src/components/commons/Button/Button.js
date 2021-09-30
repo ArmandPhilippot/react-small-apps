@@ -1,7 +1,7 @@
 import "./Button.css";
 
 function Button({
-  body,
+  children,
   onClickHandler,
   onBlurHandler,
   modifier,
@@ -18,7 +18,7 @@ function Button({
       onClick={onClickHandler}
       onBlur={onBlurHandler}
     >
-      {body}
+      {children}
     </button>
   );
 }
