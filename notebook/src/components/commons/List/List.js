@@ -1,6 +1,8 @@
 import "./List.css";
 
-function List({ type = "ul", data = [] }) {
+function List({ type = "ul", data = [], modifier = "" }) {
+  const classNames = modifier ? `list list--${modifier}` : "list";
+
   const listItems = data.map((object) => {
     return (
       <li key={object.id} className="list__item">
@@ -12,9 +14,9 @@ function List({ type = "ul", data = [] }) {
   return (
     <>
       {type === "ol" ? (
-        <ol className="list">{listItems}</ol>
+        <ol className={classNames}>{listItems}</ol>
       ) : (
-        <ul className="list">{listItems}</ul>
+        <ul className={classNames}>{listItems}</ul>
       )}
     </>
   );
