@@ -13,7 +13,20 @@
 }
 
 .notebook-page__title {
+  font-size: 1.8rem;
+  font-weight: 600;
   margin: 1rem 0;
+}
+
+.notebook-page__title .form__input {
+  border: none;
+  font-weight: inherit;
+  padding: 0;
+  width: 100%;
+}
+
+.notebook-page__title .form__input:focus {
+  outline: none;
 }
 
 .notebook-page__content {

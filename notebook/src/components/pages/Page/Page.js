@@ -1,12 +1,15 @@
 import { useEffect, useRef, useState } from "react";
-import { TextArea } from "../../commons";
+import { Input, TextArea } from "../../commons";
 import "./Page.css";
 
 function Page({ page, setPage }) {
-  const [isEditable, setIsEditable] = useState(false);
+  const [isTitleEditable, setIsTitleEditable] = useState(false);
+  const [isBodyEditable, setIsBodyEditable] = useState(false);
+  const inputRef = useRef(null);
   const textareaRef = useRef(null);
 
   useEffect(() => {
+    inputRef.current && inputRef.current.focus();
     textareaRef.current && textareaRef.current.focus();
   });
 
@@ -15,31 +18,63 @@ function Page({ page, setPage }) {
   };
 
   const handleOnChange = (e) => {
+    let newValue = {};
+
+    switch (e.target.name) {
+      case "notebook-title":
+        newValue = { title: e.target.value };
+        break;
+      case "notebook-body":
+        newValue = { body: e.target.value };
+        break;
+      default:
+        break;
+    }
+
     setPage((previous) => {
-      return { ...previous, body: e.target.value };
+      return { ...previous, ...newValue };
     });
   };
 
   return (
     <article className="notebook-page">
       <header className="notebook-page__header">
-        <h2 className="notebook-page__title">{page.title}</h2>
+        {!isTitleEditable && (
+          <h2
+            className="notebook-page__title"
+            onClick={() => setIsTitleEditable(!isTitleEditable)}
+          >
+            {page.title}
+          </h2>
+        )}
+        {isTitleEditable && (
+          <form className="notebook-page__title" onSubmit={handleSubmit}>
+            <Input
+              ref={inputRef}
+              name="notebook-title"
+              value={page.title}
+              onChangeHandler={handleOnChange}
+              onBlurHandler={() => setIsTitleEditable(!isTitleEditable)}
+            />
+          </form>
+        )}
       </header>
-      {!isEditable && (
+      {!isBodyEditable && (
         <div
           className="notebook-page__content"
-          onClick={() => setIsEditable(!isEditable)}
+          onClick={() => setIsBodyEditable(!isBodyEditable)}
         >
           {page.body}
         </div>
       )}
-      {isEditable && (
+      {isBodyEditable && (
         <form className="notebook-page__content" onSubmit={handleSubmit}>
           <TextArea
             ref={textareaRef}
+            name="notebook-body"
             value={page.body}
             onChangeHandler={handleOnChange}
-            onBlurHandler={() => setIsEditable(!isEditable)}
+            onBlurHandler={() => setIsBodyEditable(!isBodyEditable)}
           />
         </form>
       )}

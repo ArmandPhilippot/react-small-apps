@@ -1,9 +1,9 @@
 import { Redirect, Route, Switch, useLocation } from "react-router-dom";
 import { Footer, Header, Main, Nav } from "./components/layout";
 import { HomePage, NoMatch, Page } from "./components/pages";
-import "./App.css";
 import { useCallback, useEffect, useState } from "react";
 import { defaultPages } from "./config/pages";
+import "./App.css";
 
 let pageId = 0;
 
@@ -56,6 +56,15 @@ function App() {
       });
     });
   }, [currentPage.id, currentPage.body]);
+
+  useEffect(() => {
+    setPages((prevPages) => {
+      return prevPages.map((page) => {
+        if (page.id !== currentPage.id) return page;
+        return { ...page, title: currentPage.title };
+      });
+    });
+  }, [currentPage.id, currentPage.title]);
 
   return (
     <>

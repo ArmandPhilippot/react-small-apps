@@ -9,7 +9,7 @@ function autoGrow(field) {
 }
 
 function TextArea(
-  { value, onBlurHandler, onChangeHandler, additionalClasses },
+  { value, name, onBlurHandler, onChangeHandler, additionalClasses },
   ref
 ) {
   const [fieldHeight, setFieldHeight] = useState();
@@ -25,6 +25,7 @@ function TextArea(
     <textarea
       ref={ref}
       className={classNames}
+      name={name}
       value={value}
       onChange={onChangeHandler}
       onBlur={onBlurHandler}

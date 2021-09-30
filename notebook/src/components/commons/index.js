@@ -1,5 +1,5 @@
 import Button from "./Button/Button";
-import TextArea from "./FormElements/TextArea/TextArea";
+import { Input, TextArea } from "./FormElements";
 import List from "./List/List";
 
-export { Button, List, TextArea };
+export { Button, Input, List, TextArea };
