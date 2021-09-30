@@ -1,12 +1,16 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { Input, TextArea } from "../../commons";
+import useToggle from "../../helpers/hooks/useToggle";
 import "./Page.css";
 
 function Page({ page, setPage }) {
-  const [isTitleEditable, setIsTitleEditable] = useState(false);
-  const [isBodyEditable, setIsBodyEditable] = useState(false);
+  const [isTitleEditable, setIsTitleEditable] = useToggle();
+  const [isBodyEditable, setIsBodyEditable] = useToggle();
   const inputRef = useRef(null);
   const textareaRef = useRef(null);
+
+  const isCover = () => page && page.id === 0;
+  const is404 = () => page && page.id === null;
 
   useEffect(() => {
     inputRef.current && inputRef.current.focus();
@@ -37,12 +41,16 @@ function Page({ page, setPage }) {
   };
 
   return (
-    <article className="notebook-page">
+    <article
+      className={`notebook-page ${isCover() ? "notebook-page--cover" : ""}`}
+    >
       <header className="notebook-page__header">
         {!isTitleEditable && (
           <h2
             className="notebook-page__title"
-            onClick={() => setIsTitleEditable(!isTitleEditable)}
+            onClick={() => {
+              if (!is404()) setIsTitleEditable();
+            }}
           >
             {page.title}
           </h2>
@@ -54,7 +62,7 @@ function Page({ page, setPage }) {
               name="notebook-title"
               value={page.title}
               onChangeHandler={handleOnChange}
-              onBlurHandler={() => setIsTitleEditable(!isTitleEditable)}
+              onBlurHandler={setIsTitleEditable}
             />
           </form>
         )}
@@ -62,7 +70,9 @@ function Page({ page, setPage }) {
       {!isBodyEditable && (
         <div
           className="notebook-page__content"
-          onClick={() => setIsBodyEditable(!isBodyEditable)}
+          onClick={() => {
+            if (!is404()) setIsBodyEditable();
+          }}
         >
           {page.body}
         </div>
@@ -74,12 +84,12 @@ function Page({ page, setPage }) {
             name="notebook-body"
             value={page.body}
             onChangeHandler={handleOnChange}
-            onBlurHandler={() => setIsBodyEditable(!isBodyEditable)}
+            onBlurHandler={setIsBodyEditable}
           />
         </form>
       )}
       <footer className="notebook-page__footer">
-        <div className="notebook-page__number">{page.id}</div>
+        {!isCover() && <div className="notebook-page__number">{page.id}</div>}
       </footer>
     </article>
   );

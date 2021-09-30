@@ -1,6 +1,5 @@
 import { Redirect, Route, Switch, useLocation } from "react-router-dom";
-import { Footer, Header, Main, Nav } from "./components/layout";
-import { HomePage, NoMatch, Page } from "./components/pages";
+import { Footer, Header, Main, Nav, Page } from "./components/layout";
 import { useCallback, useEffect, useState } from "react";
 import { defaultPages } from "./config/pages";
 import "./App.css";
@@ -84,10 +83,10 @@ function App() {
             }}
           />
           <Route exact strict path="/404">
-            <NoMatch page={currentPage} />
+            <Page page={currentPage} setPage={setCurrentPage} />
           </Route>
           <Route exact strict path="/">
-            <HomePage page={currentPage} />
+            <Page page={currentPage} setPage={setCurrentPage} />
           </Route>
           <Route path="*">
             <Redirect to="/404" />

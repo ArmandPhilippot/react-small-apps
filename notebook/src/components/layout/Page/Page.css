@@ -52,3 +52,18 @@
 .notebook-page__footer {
   text-align: right;
 }
+
+.notebook-page--cover {
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.notebook-page--cover .notebook-page__content {
+  flex: 0;
+}
+
+.notebook-page--cover .notebook-page__title .form__input {
+  text-align: center;
+}
