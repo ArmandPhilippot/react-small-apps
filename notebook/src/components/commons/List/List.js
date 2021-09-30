@@ -1,17 +1,20 @@
-import ListItem from "./ListItem";
 import "./List.css";
 
 function List({ type = "ul", data = [] }) {
-  const dataList = data.map((object) => {
-    return <ListItem key={object.id} body={object.body} />;
+  const listItems = data.map((object) => {
+    return (
+      <li key={object.id} className="list__item">
+        {object.body}
+      </li>
+    );
   });
 
   return (
     <>
       {type === "ol" ? (
-        <ol className="list">{dataList}</ol>
+        <ol className="list">{listItems}</ol>
       ) : (
-        <ul className="list">{dataList}</ul>
+        <ul className="list">{listItems}</ul>
       )}
     </>
   );
