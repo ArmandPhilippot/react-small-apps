@@ -21,7 +21,11 @@ function Nav({ pages, currentPage, addNewPage, isPageExists }) {
       onBlur={(e) => !e.relatedTarget && setIsJumpEnabled(false)}
     >
       {!isCover() && (
-        <Link className="notebook-nav__link" to="/">
+        <Link
+          className="notebook-nav__link"
+          to="/"
+          onClick={(e) => e.target.blur()}
+        >
           Back to cover
         </Link>
       )}
@@ -30,6 +34,7 @@ function Nav({ pages, currentPage, addNewPage, isPageExists }) {
           className="notebook-nav__link"
           to={`/page/${currentPage.id - 1}`}
           onFocus={() => setIsJumpEnabled(false)}
+          onClick={(e) => e.target.blur()}
         >
           Previous page
         </Link>
@@ -45,7 +50,10 @@ function Nav({ pages, currentPage, addNewPage, isPageExists }) {
         <Link
           className="notebook-nav__link"
           to={`/page/${currentPage.id + 1}`}
-          onClick={() => !isPageExists(currentPage.id + 1) && addNewPage()}
+          onClick={(e) => {
+            !isPageExists(currentPage.id + 1) && addNewPage();
+            e.target.blur();
+          }}
           onFocus={() => setIsJumpEnabled(false)}
         >
           Next page
