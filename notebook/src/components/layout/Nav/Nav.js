@@ -8,6 +8,7 @@ function Nav({ pages, currentPage, addNewPage, isPageExists }) {
   const [isJumpEnabled, setIsJumpEnabled] = useState(false);
 
   const isCover = () => currentPage && currentPage.id === 0;
+  const isFirstPage = () => currentPage && currentPage.id === 1;
   const is404 = () => currentPage && currentPage.id === null;
 
   useEffect(() => {
@@ -24,7 +25,7 @@ function Nav({ pages, currentPage, addNewPage, isPageExists }) {
           Back to cover
         </Link>
       )}
-      {!isCover() && isPageExists(currentPage.id - 1) && (
+      {!isCover() && !isFirstPage() && isPageExists(currentPage.id - 1) && (
         <Link
           className="notebook-nav__link"
           to={`/page/${currentPage.id - 1}`}
