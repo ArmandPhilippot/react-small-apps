@@ -135,16 +135,7 @@ function App() {
               return <Redirect to="/404" />;
             }}
           />
-          <Route exact strict path="/404">
-            <Page
-              page={currentPage}
-              setPage={setCurrentPage}
-              removePage={removePage}
-              restorePage={restorePage}
-              deletedPage={deletedPage}
-            />
-          </Route>
-          <Route exact strict path="/">
+          <Route exact strict path={["/404", "/"]}>
             <Page
               page={currentPage}
               setPage={setCurrentPage}
