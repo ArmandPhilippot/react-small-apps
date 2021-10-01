@@ -7,9 +7,13 @@ import "./App.css";
 let pageId = 0;
 
 function App() {
-  const [pages, setPages] = useState(defaultPages);
+  const storedPages = JSON.parse(localStorage.getItem("notebook-pages"));
+  const initialPages = storedPages || defaultPages;
+  const [pages, setPages] = useState(initialPages);
   const [currentPage, setCurrentPage] = useState({});
   const location = useLocation();
+
+  pageId = storedPages ? storedPages.at(storedPages.length - 1).id : pageId;
 
   const isPageExists = useCallback(
     (id) => {
@@ -64,6 +68,10 @@ function App() {
       });
     });
   }, [currentPage.id, currentPage.title]);
+
+  useEffect(() => {
+    localStorage.setItem("notebook-pages", JSON.stringify(pages));
+  }, [pages]);
 
   return (
     <>
