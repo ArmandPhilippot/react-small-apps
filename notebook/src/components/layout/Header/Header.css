@@ -1,5 +1,5 @@
 .header {
-  padding: clamp(1rem, 3vw, 2rem) 0 1rem;
+  padding: clamp(1rem, 3vw, 2rem) 0 0;
 }
 
 .header__branding {
