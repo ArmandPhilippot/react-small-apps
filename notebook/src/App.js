@@ -11,7 +11,7 @@ function App() {
   const initialPages = storedPages || defaultPages;
   const [pages, setPages] = useState(initialPages);
   const [currentPage, setCurrentPage] = useState({});
-  const [deletedPage, setDeletedPage] = useState();
+  const [deletedPages, setDeletedPages] = useState([]);
   const location = useLocation();
 
   pageId = storedPages ? storedPages.at(storedPages.length - 1).id : pageId;
@@ -41,7 +41,7 @@ function App() {
     const currentPageIndex = pages.findIndex(
       (page) => page.id === currentPageId
     );
-    setDeletedPage(currentPage);
+    setDeletedPages((prev) => [...prev, currentPage]);
     pagesCopy.splice(currentPageIndex, 1);
     const newPages = pagesCopy.map((page) => {
       if (page.id <= currentPageId) return page;
@@ -55,6 +55,7 @@ function App() {
   }, [pages, currentPage]);
 
   const restorePage = useCallback(() => {
+    const deletedPage = deletedPages.pop();
     const pagesCopy = pages.slice(0);
     const restoredPageIndex = pagesCopy.findIndex(
       (page) => page.id === deletedPage.id
@@ -68,8 +69,7 @@ function App() {
     newPages.splice(restoredPageIndex, 0, deletedPage);
     setCurrentPage(...newPages.filter((page) => page.id === deletedPage.id));
     setPages(newPages);
-    setDeletedPage(null);
-  }, [pages, deletedPage]);
+  }, [pages, deletedPages]);
 
   useEffect(() => {
     !isPageExists(1) && addNewPage();
@@ -129,7 +129,7 @@ function App() {
                     setPage={setCurrentPage}
                     removePage={removePage}
                     restorePage={restorePage}
-                    deletedPage={deletedPage}
+                    deletedPages={deletedPages}
                   />
                 );
               return <Redirect to="/404" />;
@@ -141,7 +141,7 @@ function App() {
               setPage={setCurrentPage}
               removePage={removePage}
               restorePage={restorePage}
-              deletedPage={deletedPage}
+              deletedPages={deletedPages}
             />
           </Route>
           <Route path="*">

@@ -4,7 +4,7 @@ import useToggle from "../../helpers/hooks/useToggle";
 import PageToolbar from "./PageToolbar";
 import "./Page.css";
 
-function Page({ page, setPage, removePage, restorePage, deletedPage }) {
+function Page({ page, setPage, removePage, restorePage, deletedPages }) {
   const [isTitleEditable, setIsTitleEditable] = useToggle();
   const [isBodyEditable, setIsBodyEditable] = useToggle();
   const inputRef = useRef(null);
@@ -95,7 +95,7 @@ function Page({ page, setPage, removePage, restorePage, deletedPage }) {
           <PageToolbar
             removePage={removePage}
             restorePage={restorePage}
-            deletedPage={deletedPage}
+            deletedPages={deletedPages}
           />
         )}
       </footer>
