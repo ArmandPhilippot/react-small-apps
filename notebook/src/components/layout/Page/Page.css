@@ -54,7 +54,10 @@
   text-align: right;
 }
 
-.notebook-page__footer .btn--delete {
+.notebook-page__toolbar {
+  display: flex;
+  flex-flow: row;
+  gap: 1rem;
   position: absolute;
   top: 1rem;
   right: 1rem;

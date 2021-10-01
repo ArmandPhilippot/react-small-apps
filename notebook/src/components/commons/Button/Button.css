@@ -24,7 +24,7 @@
   transform: scale(1);
 }
 
-.btn--delete .icon {
+.btn .icon {
   height: 100%;
   width: 100%;
 }
@@ -47,4 +47,32 @@
   fill: #fff;
   stroke: #fff;
   stroke-width: 1;
+}
+
+.btn--restore {
+  background: hsl(212, 44%, 44%);
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px hsl(212, 44%, 29%), 1px 2px 1px 2px hsl(212, 44%, 29%);
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0.5rem;
+  transition: transform 0.3s ease-in-out 0s;
+}
+
+.btn--restore:hover {
+  background: hsl(212, 44%, 50%);
+  transform: scale(1.1);
+}
+
+.btn--restore:active {
+  background: hsl(212, 44%, 40%);
+  transform: scale(1);
+}
+
+.btn--restore #restore-circle,
+.btn--restore #restore-arrow,
+.btn--restore #restore-first-clock-hand,
+.btn--restore #restore-second-clock-hand {
+  fill: #fff;
 }

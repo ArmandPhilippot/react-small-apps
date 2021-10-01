@@ -11,6 +11,7 @@ function App() {
   const initialPages = storedPages || defaultPages;
   const [pages, setPages] = useState(initialPages);
   const [currentPage, setCurrentPage] = useState({});
+  const [deletedPage, setDeletedPage] = useState();
   const location = useLocation();
 
   pageId = storedPages ? storedPages.at(storedPages.length - 1).id : pageId;
@@ -40,6 +41,7 @@ function App() {
     const currentPageIndex = pages.findIndex(
       (page) => page.id === currentPageId
     );
+    setDeletedPage(currentPage);
     pagesCopy.splice(currentPageIndex, 1);
     const newPages = pagesCopy.map((page) => {
       if (page.id <= currentPageId) return page;
@@ -51,6 +53,23 @@ function App() {
     setPages(newPages);
     pageId = pageId - 1;
   }, [pages, currentPage]);
+
+  const restorePage = useCallback(() => {
+    const pagesCopy = pages.slice(0);
+    const restoredPageIndex = pagesCopy.findIndex(
+      (page) => page.id === deletedPage.id
+    );
+    const newPages = pagesCopy.map((page) => {
+      if (page.id < deletedPage.id) return page;
+      const newId = page.id + 1;
+      const newURL = `/page/${newId}`;
+      return { ...page, id: newId, url: newURL };
+    });
+    newPages.splice(restoredPageIndex, 0, deletedPage);
+    setCurrentPage(...newPages.filter((page) => page.id === deletedPage.id));
+    setPages(newPages);
+    setDeletedPage(null);
+  }, [pages, deletedPage]);
 
   useEffect(() => {
     !isPageExists(1) && addNewPage();
@@ -109,6 +128,8 @@ function App() {
                     page={currentPage}
                     setPage={setCurrentPage}
                     removePage={removePage}
+                    restorePage={restorePage}
+                    deletedPage={deletedPage}
                   />
                 );
               return <Redirect to="/404" />;
@@ -119,6 +140,8 @@ function App() {
               page={currentPage}
               setPage={setCurrentPage}
               removePage={removePage}
+              restorePage={restorePage}
+              deletedPage={deletedPage}
             />
           </Route>
           <Route exact strict path="/">
@@ -126,6 +149,8 @@ function App() {
               page={currentPage}
               setPage={setCurrentPage}
               removePage={removePage}
+              restorePage={restorePage}
+              deletedPage={deletedPage}
             />
           </Route>
           <Route path="*">
