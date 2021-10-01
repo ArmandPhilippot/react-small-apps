@@ -4,6 +4,7 @@
   min-height: 500px;
   padding: clamp(1rem, 3vw, 2rem) 0;
   border: 1px solid #000;
+  position: relative;
 }
 
 .notebook-page__header,
@@ -51,6 +52,12 @@
 
 .notebook-page__footer {
   text-align: right;
+}
+
+.notebook-page__footer .btn--delete {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
 }
 
 .notebook-page--cover {

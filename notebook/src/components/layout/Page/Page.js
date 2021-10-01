@@ -1,9 +1,10 @@
 import { useEffect, useRef } from "react";
-import { Input, TextArea } from "../../commons";
+import { Button, Input, TextArea } from "../../commons";
 import useToggle from "../../helpers/hooks/useToggle";
 import "./Page.css";
+import { ReactComponent as TrashIcon } from "../../../images/trash.svg";
 
-function Page({ page, setPage }) {
+function Page({ page, setPage, removePage }) {
   const [isTitleEditable, setIsTitleEditable] = useToggle();
   const [isBodyEditable, setIsBodyEditable] = useToggle();
   const inputRef = useRef(null);
@@ -90,6 +91,11 @@ function Page({ page, setPage }) {
       )}
       <footer className="notebook-page__footer">
         {!isCover() && <div className="notebook-page__number">{page.id}</div>}
+        {!isCover() && (
+          <Button modifier="delete" onClickHandler={removePage}>
+            <TrashIcon title="Delete this page" className="icon icon--trash" />
+          </Button>
+        )}
       </footer>
     </article>
   );

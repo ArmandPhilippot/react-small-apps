@@ -34,6 +34,24 @@ function App() {
     setPages((previous) => [...previous, newPage]);
   }, []);
 
+  const removePage = useCallback(() => {
+    const currentPageId = currentPage.id;
+    const pagesCopy = pages.slice(0);
+    const currentPageIndex = pages.findIndex(
+      (page) => page.id === currentPageId
+    );
+    pagesCopy.splice(currentPageIndex, 1);
+    const newPages = pagesCopy.map((page) => {
+      if (page.id <= currentPageId) return page;
+      const newId = page.id - 1;
+      const newURL = `/page/${newId}`;
+      return { ...page, id: newId, url: newURL };
+    });
+    setCurrentPage(...newPages.filter((page) => page.id === currentPageId));
+    setPages(newPages);
+    pageId = pageId - 1;
+  }, [pages, currentPage]);
+
   useEffect(() => {
     !isPageExists(1) && addNewPage();
   }, [isPageExists, addNewPage]);
@@ -86,15 +104,29 @@ function App() {
               const requestedPageId = parseInt(route.match.params.number, 10);
               if (requestedPageId === 0) return <Redirect to="/" />;
               if (isPageExists(requestedPageId))
-                return <Page page={currentPage} setPage={setCurrentPage} />;
+                return (
+                  <Page
+                    page={currentPage}
+                    setPage={setCurrentPage}
+                    removePage={removePage}
+                  />
+                );
               return <Redirect to="/404" />;
             }}
           />
           <Route exact strict path="/404">
-            <Page page={currentPage} setPage={setCurrentPage} />
+            <Page
+              page={currentPage}
+              setPage={setCurrentPage}
+              removePage={removePage}
+            />
           </Route>
           <Route exact strict path="/">
-            <Page page={currentPage} setPage={setCurrentPage} />
+            <Page
+              page={currentPage}
+              setPage={setCurrentPage}
+              removePage={removePage}
+            />
           </Route>
           <Route path="*">
             <Redirect to="/404" />

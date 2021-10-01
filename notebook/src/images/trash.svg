@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="80"
+   height="80"
+   viewBox="0 0 80 80"
+   xmlns="http://www.w3.org/2000/svg">
+  <path
+     fill="none"
+     stroke="#000000"
+     stroke-width="4"
+     id="trash-lid-handle"
+     d="M 39.999977,2.0049906 A 10.941541,10.901606 0 0 0 29.380829,10.392059 c 6.823427,-0.19706 14.435517,-0.202894 21.257435,-0.01905 A 10.941541,10.901606 0 0 0 39.999977,2.00502 Z M 39.865976,23.799924 a 10.941541,10.901606 0 0 0 0.134001,0.0096 10.941541,10.901606 0 0 0 0.358917,-0.0096 z" />
+  <path
+     fill="#ffffff"
+     stroke="#000000"
+     stroke-width="4"
+     id="trash-container"
+     d="m 15.029909,24.102259 h 49.940182 v 53.89774 H 15.029909 Z" />
+  <path
+     fill="#ffffff"
+     stroke="#000000"
+     stroke-width="4"
+     id="trash-lid"
+     d="m 70.398893,12.759297 c 0,3.026127 0,11.039803 0,11.039803 H 9.601107 c 0,0 0,-7.816365 0,-11.039803 0,-3.2958374 60.797786,-3.4333596 60.797786,0 z" />
+  <rect
+     fill="#000000"
+     id="trash-stroke1"
+     width="3.0539479"
+     height="32.859192"
+     x="23.934427"
+     y="34.621532" />
+  <rect
+     fill="#000000"
+     id="trash-stroke2"
+     width="3.0539479"
+     height="32.859192"
+     x="38.47303"
+     y="34.621532" />
+  <rect
+     fill="#000000"
+     id="trash-stroke3"
+     width="3.0539479"
+     height="32.859192"
+     x="53.011623"
+     y="34.621532" />
+</svg>
