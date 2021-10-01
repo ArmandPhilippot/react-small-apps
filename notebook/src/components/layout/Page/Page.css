@@ -51,6 +51,8 @@
   display: flex;
   margin: clamp(1rem, 3vw, 2rem) 0 clamp(2rem, 3vw, 3rem);
   white-space: pre-wrap;
+  word-break: break-all;
+  hyphens: auto;
 }
 
 .notebook-page__content .form__textarea {
