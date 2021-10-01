@@ -1,22 +1,38 @@
 .notebook-page {
   display: flex;
   flex-flow: column nowrap;
-  min-height: 500px;
   padding: clamp(1rem, 3vw, 2rem) 0;
-  border: 1px solid #000;
-  position: relative;
+  background: #fff;
+  border: 1px solid #cacaca;
+  box-shadow: 1px 1px 0 0 #ebebeb, 1px 1px 0 1px #bebebe, 2px 2px 0 1px #ebebeb,
+    2px 2px 0 2px #bebebe, 3px 3px 0 2px #ebebeb, 3px 3px 0 3px #bebebe;
+}
+
+.notebook-page--mirror {
+  box-shadow: -1px 1px 0 0 #ebebeb, -1px 1px 0 1px #bebebe,
+    -2px 2px 0 1px #ebebeb, -2px 2px 0 2px #bebebe, -3px 3px 0 2px #ebebeb,
+    -3px 3px 0 3px #bebebe;
+}
+
+@media screen and (max-width: 1023px) {
+  .notebook-page {
+    grid-column: 1/-1;
+  }
+  .notebook-page--mirror {
+    display: none;
+  }
 }
 
 .notebook-page__header,
 .notebook-page__footer,
 .notebook-page__content {
-  padding: 0 clamp(1rem, 3vw, 3rem);
+  padding: 0 3rem 0 2rem;
 }
 
 .notebook-page__title {
   font-size: 1.8rem;
   font-weight: 600;
-  margin: 1rem 0;
+  margin: 1rem 0 0;
 }
 
 .notebook-page__title .form__input {
@@ -60,21 +76,6 @@
   flex-flow: row;
   gap: 1rem;
   position: absolute;
-  top: 1rem;
+  top: -4rem;
   right: 1rem;
-}
-
-.notebook-page--cover {
-  justify-content: center;
-  font-size: 2rem;
-  font-weight: 600;
-  text-align: center;
-}
-
-.notebook-page--cover .notebook-page__content {
-  flex: 0;
-}
-
-.notebook-page--cover .notebook-page__title .form__input {
-  text-align: center;
 }

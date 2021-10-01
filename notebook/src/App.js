@@ -16,6 +16,7 @@ function App() {
 
   pageId = storedPages ? storedPages.at(storedPages.length - 1).id : pageId;
 
+  const isCover = () => currentPage && currentPage.id === 0;
   const isPageExists = useCallback(
     (id) => {
       const pageIndex = pages.findIndex((page) => page.id === id);
@@ -114,40 +115,43 @@ function App() {
     <>
       <Header />
       <Main>
-        <Switch>
-          <Route
-            exact
-            strict
-            path="/page/:number"
-            render={(route) => {
-              const requestedPageId = parseInt(route.match.params.number, 10);
-              if (requestedPageId === 0) return <Redirect to="/" />;
-              if (isPageExists(requestedPageId))
-                return (
-                  <Page
-                    page={currentPage}
-                    setPage={setCurrentPage}
-                    removePage={removePage}
-                    restorePage={restorePage}
-                    deletedPages={deletedPages}
-                  />
-                );
-              return <Redirect to="/404" />;
-            }}
-          />
-          <Route exact strict path={["/404", "/"]}>
-            <Page
-              page={currentPage}
-              setPage={setCurrentPage}
-              removePage={removePage}
-              restorePage={restorePage}
-              deletedPages={deletedPages}
+        <div className={`notebook ${isCover() ? "notebook--cover" : ""}`}>
+          <div className="notebook-page notebook-page--mirror"></div>
+          <Switch>
+            <Route
+              exact
+              strict
+              path="/page/:number"
+              render={(route) => {
+                const requestedPageId = parseInt(route.match.params.number, 10);
+                if (requestedPageId === 0) return <Redirect to="/" />;
+                if (isPageExists(requestedPageId))
+                  return (
+                    <Page
+                      page={currentPage}
+                      setPage={setCurrentPage}
+                      removePage={removePage}
+                      restorePage={restorePage}
+                      deletedPages={deletedPages}
+                    />
+                  );
+                return <Redirect to="/404" />;
+              }}
             />
-          </Route>
-          <Route path="*">
-            <Redirect to="/404" />
-          </Route>
-        </Switch>
+            <Route exact strict path={["/404", "/"]}>
+              <Page
+                page={currentPage}
+                setPage={setCurrentPage}
+                removePage={removePage}
+                restorePage={restorePage}
+                deletedPages={deletedPages}
+              />
+            </Route>
+            <Route path="*">
+              <Redirect to="/404" />
+            </Route>
+          </Switch>
+        </div>
         <Nav
           pages={pages}
           currentPage={currentPage}

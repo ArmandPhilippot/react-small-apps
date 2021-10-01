@@ -17,21 +17,17 @@ function Nav({ pages, currentPage, addNewPage, isPageExists }) {
 
   return (
     <nav
-      className="notebook-nav"
+      className="nav"
       onBlur={(e) => !e.relatedTarget && setIsJumpEnabled(false)}
     >
       {!isCover() && (
-        <Link
-          className="notebook-nav__link"
-          to="/"
-          onClick={(e) => e.target.blur()}
-        >
+        <Link className="nav__link" to="/" onClick={(e) => e.target.blur()}>
           Back to cover
         </Link>
       )}
       {!isCover() && !isFirstPage() && isPageExists(currentPage.id - 1) && (
         <Link
-          className="notebook-nav__link"
+          className="nav__link"
           to={`/page/${currentPage.id - 1}`}
           onFocus={() => setIsJumpEnabled(false)}
           onClick={(e) => e.target.blur()}
@@ -40,7 +36,7 @@ function Nav({ pages, currentPage, addNewPage, isPageExists }) {
         </Link>
       )}
       <Button
-        additionalClassnames="notebook-nav__link"
+        additionalClassnames="nav__link"
         onClickHandler={() => setIsJumpEnabled(!isJumpEnabled)}
       >
         Jump to
@@ -48,7 +44,7 @@ function Nav({ pages, currentPage, addNewPage, isPageExists }) {
       {isJumpEnabled && <NavJump pages={pages} />}
       {!is404() && (
         <Link
-          className="notebook-nav__link"
+          className="nav__link"
           to={`/page/${currentPage.id + 1}`}
           onClick={(e) => {
             !isPageExists(currentPage.id + 1) && addNewPage();

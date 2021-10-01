@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import { Input, TextArea } from "../../commons";
 import useToggle from "../../helpers/hooks/useToggle";
 import PageToolbar from "./PageToolbar";
+import "./Cover.css";
 import "./Page.css";
 
 function Page({ page, setPage, removePage, restorePage, deletedPages }) {

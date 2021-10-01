@@ -7,8 +7,8 @@
   border: none;
   border-radius: 50%;
   box-shadow: 0 0 0 2px hsl(0, 44%, 29%), 1px 2px 1px 2px hsl(0, 44%, 29%);
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 2.4rem;
+  height: 2.4rem;
   padding: 0.5rem;
   transition: transform 0.3s ease-in-out 0s;
 }
@@ -54,8 +54,8 @@
   border: none;
   border-radius: 50%;
   box-shadow: 0 0 0 2px hsl(212, 44%, 29%), 1px 2px 1px 2px hsl(212, 44%, 29%);
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 2.4rem;
+  height: 2.4rem;
   padding: 0.5rem;
   transition: transform 0.3s ease-in-out 0s;
 }

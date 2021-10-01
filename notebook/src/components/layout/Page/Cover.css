@@ -1,0 +1,30 @@
+.notebook--cover .notebook-page--mirror {
+  display: none;
+}
+
+.notebook--cover .notebook-page {
+  grid-column: 1 / -1;
+  background: hsl(0, 4%, 20%);
+  color: rgb(234, 235, 236);
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 0 #000;
+  box-shadow: none;
+}
+
+.notebook--cover .notebook-page {
+  justify-content: center;
+  text-align: center;
+}
+
+.notebook--cover .notebook-page__title {
+  font-size: 3rem;
+  font-weight: 600;
+}
+
+.notebook--cover .notebook-page .notebook-page__content {
+  flex: 0;
+}
+
+.notebook--cover .notebook-page .notebook-page__title .form__input {
+  text-align: center;
+}

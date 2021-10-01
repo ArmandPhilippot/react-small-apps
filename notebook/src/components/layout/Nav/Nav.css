@@ -1,23 +1,29 @@
-.notebook-nav {
+.nav {
   position: relative;
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
-  margin: 2rem auto;
+  margin: 2rem auto 0;
 }
 
-.notebook-nav .list--nav {
+.nav .list--nav {
   list-style-type: none;
   position: absolute;
   bottom: 100%;
-  width: 50%;
+  width: 80vw;
   margin: 0;
   padding: 1rem;
   background: #fff;
   border: 1px solid #ccc;
 }
 
-.notebook-nav__link {
+@media screen and (min-width: 1024px) {
+  .nav .list--nav {
+    width: 50%;
+  }
+}
+
+.nav__link {
   background: #fff;
   border: none;
   color: hsl(212, 46%, 34%);
@@ -27,33 +33,33 @@
   padding: 0.8rem 1rem;
 }
 
-.notebook-nav .list__link {
+.nav .list__link {
   display: block;
   padding: 0.2rem;
 }
 
-.notebook-nav .list__link--current {
+.nav .list__link--current {
   background: hsl(212, 46%, 34%);
   color: #fff;
 }
 
-.notebook-nav__link:hover,
-.notebook-nav__link:focus,
-.notebook-nav .list__link:hover,
-.notebook-nav .list__link:focus {
+.nav__link:hover,
+.nav__link:focus,
+.nav .list__link:hover,
+.nav .list__link:focus {
   text-decoration-thickness: 4px;
 }
 
-.notebook-nav__link:focus,
-.notebook-nav .list__link:focus {
+.nav__link:focus,
+.nav .list__link:focus {
   color: inherit;
 }
 
-.notebook-nav .list__link--current:focus {
+.nav .list__link--current:focus {
   color: hsl(0, 0%, 89%);
 }
 
-.notebook-nav__link:active {
+.nav__link:active {
   color: hsl(212, 46%, 20%);
   text-decoration-thickness: 2px;
 }
