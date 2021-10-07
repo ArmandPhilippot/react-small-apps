@@ -18,6 +18,12 @@ A notebook implementation with React.
 2. (`yarn global add serve`)
 3. `serve -s build`
 
+## Previews
+
+| Cover | Page |
+| --- | --- |
+| ![Cover preview](./public/preview-cover.jpg) | ![Page preview](./public/preview-page.jpg) |
+
 ## License
 
 This project is open source and available under the [MIT license](../LICENSE).
