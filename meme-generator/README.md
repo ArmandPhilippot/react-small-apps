@@ -18,6 +18,10 @@ A meme generator implementation with React.
 2. (`yarn global add serve`)
 3. `serve -s build`
 
+## Preview
+
+![Meme generator preview](./public/preview-meme-generator.jpg)
+
 ## License
 
 This project is open source and available under the [MIT license](../LICENSE).
