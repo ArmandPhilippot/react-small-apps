@@ -21,7 +21,7 @@ function UserOptions({ username }) {
   return (
     <>
       <Button onClickHandler={() => setIsExpanded(!isExpanded)}>
-        Welcome, {username}
+        {username}
       </Button>
       {isExpanded ? displayUserOptions() : ""}
     </>

@@ -8,7 +8,9 @@ function Input({
   type = "text",
 }) {
   const handleChange = (e) => {
-    updateValue(e.target.value);
+    e.target.type === "checkbox"
+      ? updateValue(e.target.checked)
+      : updateValue(e.target.value);
   };
 
   return (
@@ -18,7 +20,8 @@ function Input({
         type={type}
         id={id}
         name={name}
-        value={value}
+        value={type === "checkbox" ? undefined : value}
+        checked={type === "checkbox" ? value : null}
         required={required ? "required" : false}
         onChange={handleChange}
         className="form__input"
