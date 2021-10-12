@@ -7,12 +7,7 @@ function TodoList() {
   const userTodos = todosList.filter((todo) => todo.userId === currentUser.id);
 
   const userTodosList = userTodos.map((todo) => (
-    <TodoListItem
-      key={todo.id}
-      id={todo.id}
-      date={todo.createdAt}
-      title={todo.title}
-    />
+    <TodoListItem key={todo.id} todo={todo} />
   ));
 
   return (
