@@ -4,7 +4,7 @@ export const usersSlice = createSlice({
   name: "users",
   initialState: [
     {
-      id: nanoid(),
+      id: "demo",
       createdAt: new Date().toISOString(),
       username: "Demo",
       email: "demo@email.com",

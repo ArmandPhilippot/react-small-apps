@@ -8,7 +8,7 @@ export const todosSlice = createSlice({
       createdAt: new Date().toISOString(),
       title: "Build a todo app",
       body: "",
-      owner: "",
+      userId: "demo",
       done: false,
     },
   ],
@@ -17,9 +17,9 @@ export const todosSlice = createSlice({
       reducer: (state, action) => {
         state.push(action.payload);
       },
-      prepare: (owner, title, body = "") => {
+      prepare: (userId, title, body = "") => {
         const id = nanoid();
-        return { payload: { id, owner, title, body } };
+        return { payload: { id, userId, title, body } };
       },
     },
     deleteTodo: (state, action) => {
