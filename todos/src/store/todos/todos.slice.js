@@ -17,9 +17,10 @@ export const todosSlice = createSlice({
       reducer: (state, action) => {
         state.push(action.payload);
       },
-      prepare: (userId, title, body = "") => {
+      prepare: ({ userId, title, body = "" }) => {
         const id = nanoid();
-        return { payload: { id, userId, title, body } };
+        const createdAt = new Date().toISOString();
+        return { payload: { id, createdAt, userId, title, body } };
       },
     },
     deleteTodo: (state, action) => {
