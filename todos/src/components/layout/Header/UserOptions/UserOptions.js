@@ -9,7 +9,9 @@ function UserOptions({ username }) {
     return (
       <nav>
         <ul>
-          <li>Account</li>
+          <li>
+            <Link to="/account">Account</Link>
+          </li>
           <li>
             <Link to="/logout">Logout</Link>
           </li>
