@@ -21,7 +21,11 @@ function TodoList() {
       <Button modifier="action" onClickHandler={() => setIsToggled(!isToggled)}>
         New todo
       </Button>
-      {isToggled ? <TodoForm userId={currentUser.id} /> : ""}
+      {isToggled ? (
+        <TodoForm userId={currentUser.id} closeForm={setIsToggled} />
+      ) : (
+        ""
+      )}
       {userTodosList.length > 0 ? (
         <ul className="todos-list">{userTodosList}</ul>
       ) : (

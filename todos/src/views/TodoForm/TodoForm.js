@@ -3,13 +3,14 @@ import { useDispatch } from "react-redux";
 import { Button, Fieldset, Input, TextArea } from "../../components/forms";
 import { addTodo } from "../../store/todos/todos.slice";
 
-function TodoForm({ userId }) {
+function TodoForm({ userId, closeForm }) {
   const [titleValue, setTitleValue] = useState("");
   const [bodyValue, setBodyValue] = useState("");
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    closeForm((prev) => !prev);
   };
 
   const handleSave = () => {
