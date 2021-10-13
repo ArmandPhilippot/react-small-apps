@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { Input } from "../../components/forms";
-import { toggleTodo } from "../../store/todos/todos.slice";
+import { Button, Input } from "../../components/forms";
+import { deleteTodo, toggleTodo } from "../../store/todos/todos.slice";
 import { slugify } from "../../utilities/helpers";
 
 function TodoListItem({ todo }) {
@@ -38,6 +38,9 @@ function TodoListItem({ todo }) {
         value={isChecked}
         updateValue={handleTodoDone}
       />
+      <Button modifier="action" onClickHandler={() => dispatch(deleteTodo(id))}>
+        Delete
+      </Button>
     </li>
   );
 }

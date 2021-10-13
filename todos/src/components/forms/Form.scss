@@ -49,15 +49,15 @@
       outline: none;
       transform: translateY(-2px) translateX(-2px);
     }
+
+    & + * {
+      margin-top: 1rem;
+    }
   }
 
   &--textarea {
     min-height: 10rem;
     min-width: 20rem;
-  }
-
-  + * {
-    margin-top: 1rem;
   }
 }
 

@@ -22,7 +22,11 @@ function TodoList() {
         New todo
       </Button>
       {isToggled ? <TodoForm userId={currentUser.id} /> : ""}
-      <ul className="todos-list">{userTodosList}</ul>
+      {userTodosList.length > 0 ? (
+        <ul className="todos-list">{userTodosList}</ul>
+      ) : (
+        ""
+      )}
     </div>
   );
 }

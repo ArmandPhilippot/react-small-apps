@@ -8,6 +8,7 @@
 
   &__item {
     display: flex;
+    align-items: center;
     gap: 1rem;
     padding: 1rem;
 
@@ -37,6 +38,26 @@
     &--done {
       .todo__title {
         background-size: 100% 100%;
+      }
+    }
+
+    .btn {
+      background-image: linear-gradient(
+        to left,
+        var.$background-color,
+        var.$background-color 50%,
+        var.$delete-color 50%
+      );
+      border-color: var.$delete-color;
+      color: var.$delete-color;
+      padding: 0.4rem 0.7rem;
+
+      &:hover {
+        color: var.$foreground-color-alt;
+      }
+
+      &:active {
+        color: var.$delete-color;
       }
     }
   }
