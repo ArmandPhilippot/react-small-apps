@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import "./Account.scss";
 
 function Account() {
   const currentUser = useSelector((state) => state.auth.currentUser);
