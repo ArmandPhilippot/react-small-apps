@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { Button, Input } from "../../components/forms";
@@ -6,9 +6,13 @@ import { deleteTodo, toggleTodo } from "../../store/todos/todos.slice";
 import { slugify } from "../../utilities/helpers";
 
 function TodoListItem({ todo }) {
-  const { id, createdAt, title } = todo;
+  const { id, createdAt, title, done } = todo;
   const [isChecked, setIsChecked] = useState(false);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (done) setIsChecked(true);
+  }, [done]);
 
   const handleTodoDone = (checkboxState) => {
     setIsChecked(checkboxState);
