@@ -18,7 +18,7 @@ function TodoListItem({ todo }) {
   const todoSlug = slugify(title);
 
   return (
-    <li className="todos-list__item todo">
+    <li className="todos-list__item">
       <span className="todo__date">
         {new Date(createdAt).toLocaleDateString()}
       </span>
@@ -27,7 +27,13 @@ function TodoListItem({ todo }) {
           {title}
         </Link>
       </span>
-      <Input type="checkbox" value={isChecked} updateValue={handleTodoDone} />
+      <Input
+        type="checkbox"
+        label="Done?"
+        id={id}
+        value={isChecked}
+        updateValue={handleTodoDone}
+      />
     </li>
   );
 }

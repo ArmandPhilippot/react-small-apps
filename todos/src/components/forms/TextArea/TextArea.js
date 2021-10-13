@@ -5,8 +5,18 @@ function TextArea({ label, id, value, updateValue }) {
 
   return (
     <>
-      {label ? <label htmlFor={id}>{label}</label> : ""}
-      <textarea value={value} onChange={handleChange} />
+      {label ? (
+        <label htmlFor={id} className="form__label">
+          {label}
+        </label>
+      ) : (
+        ""
+      )}
+      <textarea
+        value={value}
+        onChange={handleChange}
+        className="form__field form__field--textarea"
+      />
     </>
   );
 }

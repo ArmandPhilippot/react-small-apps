@@ -1,0 +1,23 @@
+@use "../../sass/abstracts/placeholders";
+
+.todos-list {
+  @extend %list-reset;
+  border: 1px solid #000;
+  margin-top: 1.5rem;
+
+  &__item {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+
+    &:not(:first-child) {
+      border-top: 1px solid #000;
+    }
+
+    .form__label {
+      margin: 0 0 0 auto;
+      letter-spacing: 0;
+      text-transform: none;
+    }
+  }
+}

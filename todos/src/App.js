@@ -6,6 +6,8 @@ import LoginForm from "./views/LoginForm/LoginForm";
 import Logout from "./views/Logout/Logout";
 import Todo from "./views/Todo/Todo";
 import TodoList from "./views/TodoList/TodoList";
+import "modern-normalize";
+import "./App.scss";
 
 function App() {
   const isUserLoggedIn = useSelector((state) => state.auth.isAuthenticated);

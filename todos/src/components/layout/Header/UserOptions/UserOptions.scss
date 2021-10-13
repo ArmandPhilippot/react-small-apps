@@ -1,0 +1,50 @@
+@use "../../../../sass/abstracts/mixins" as mix;
+@use "../../../../sass/abstracts/placeholders";
+@use "../../../../sass/abstracts/variables" as var;
+
+.nav {
+  &__list {
+    @extend %list-reset;
+  }
+
+  &--user {
+    border: 1px solid var.$primary-color;
+    box-shadow: 0 2px 3px 0 var.$shadow-color;
+    position: absolute;
+    top: 100%;
+    right: 0;
+
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: -1.15rem;
+      left: calc(50% - 1.15rem / 2);
+      @include mix.triangle(1.2rem, var.$primary-color, up);
+    }
+
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      top: -1rem;
+      left: calc(50% - 1rem / 2);
+      @include mix.triangle(1rem, var.$background-color, up);
+    }
+  }
+
+  &--user & {
+    &__link {
+      display: block;
+      padding: 0.5rem 1rem;
+      background: var.$background-color;
+
+      &:focus {
+        background: var.$primary-color;
+        color: var.$foreground-color-alt;
+        outline: none;
+        transition: none;
+      }
+    }
+  }
+}

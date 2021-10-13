@@ -1,0 +1,18 @@
+@use "../../../sass/abstracts/variables" as var;
+
+.header {
+  border-bottom: 1px solid var.$primary-color;
+
+  .container {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0;
+    position: relative;
+  }
+}
+
+.branding {
+  color: var.$primary-color;
+}

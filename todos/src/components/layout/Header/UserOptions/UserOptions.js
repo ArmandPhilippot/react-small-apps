@@ -1,19 +1,24 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "../../../forms";
+import "./UserOptions.scss";
 
 function UserOptions({ username }) {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const displayUserOptions = () => {
     return (
-      <nav>
-        <ul>
-          <li>
-            <Link to="/account">Account</Link>
+      <nav className="nav nav--user">
+        <ul className="nav__list">
+          <li className="nav__item">
+            <Link to="/account" className="nav__link">
+              Account
+            </Link>
           </li>
-          <li>
-            <Link to="/logout">Logout</Link>
+          <li className="nav__item">
+            <Link to="/logout" className="nav__link">
+              Logout
+            </Link>
           </li>
         </ul>
       </nav>
@@ -22,7 +27,7 @@ function UserOptions({ username }) {
 
   return (
     <>
-      <Button onClickHandler={() => setIsExpanded(!isExpanded)}>
+      <Button modifier="user" onClickHandler={() => setIsExpanded(!isExpanded)}>
         {username}
       </Button>
       {isExpanded ? displayUserOptions() : ""}

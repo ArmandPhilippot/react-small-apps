@@ -15,7 +15,11 @@ function Input({
 
   return (
     <>
-      {label && <label htmlFor={id}>{label}</label>}
+      {label && (
+        <label htmlFor={id} className="form__label">
+          {label}
+        </label>
+      )}
       <input
         type={type}
         id={id}
@@ -24,7 +28,7 @@ function Input({
         checked={type === "checkbox" ? value : null}
         required={required ? "required" : false}
         onChange={handleChange}
-        className="form__input"
+        className="form__field"
       />
     </>
   );

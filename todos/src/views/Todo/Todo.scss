@@ -1,0 +1,13 @@
+.todo {
+  border: 1px solid #000;
+  margin-top: 2rem;
+  padding: 1rem;
+
+  & &__title {
+    font-size: 1.2rem;
+  }
+
+  & &__body {
+    margin-top: 1rem;
+  }
+}

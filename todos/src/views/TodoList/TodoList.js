@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { Button } from "../../components/forms";
 import TodoForm from "../TodoForm/TodoForm";
 import TodoListItem from "./TodoListItem";
+import "./TodoList.scss";
 
 function TodoList() {
   const [isToggled, setIsToggled] = useState(false);
@@ -17,7 +18,9 @@ function TodoList() {
   return (
     <div>
       <h2>Welcome back {currentUser.username}!</h2>
-      <Button onClickHandler={() => setIsToggled(!isToggled)}>New todo</Button>
+      <Button modifier="action" onClickHandler={() => setIsToggled(!isToggled)}>
+        New todo
+      </Button>
       {isToggled ? <TodoForm userId={currentUser.id} /> : ""}
       <ul className="todos-list">{userTodosList}</ul>
     </div>

@@ -18,15 +18,15 @@ function TodoForm({ userId }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <Fieldset legend="New todo">
+    <form onSubmit={handleSubmit} className="form form--todo">
+      <Fieldset legend="Add a new todo">
         <Input label="Title" value={titleValue} updateValue={setTitleValue} />
         <TextArea
           label="Details"
           value={bodyValue}
           updateValue={setBodyValue}
         />
-        <Button type="submit" onClickHandler={handleSave}>
+        <Button type="submit" modifier="submit" onClickHandler={handleSave}>
           Save
         </Button>
       </Fieldset>
