@@ -133,3 +133,22 @@
     text-decoration: underline 1px;
   }
 }
+
+.btn--delete {
+  background-image: linear-gradient(
+    to left,
+    var.$background-color,
+    var.$background-color 50%,
+    var.$delete-color 50%
+  );
+  border-color: var.$delete-color;
+  color: var.$delete-color;
+
+  &:hover {
+    color: var.$foreground-color-alt;
+  }
+
+  &:active {
+    color: var.$delete-color;
+  }
+}

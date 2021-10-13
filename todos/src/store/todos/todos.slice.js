@@ -42,10 +42,13 @@ export const todosSlice = createSlice({
         ...state.slice(index + 1),
       ];
     },
+    deleteAllTodos: () => {
+      return [];
+    },
   },
 });
 
-export const { addTodo, deleteTodo, updateTodo, toggleTodo } =
+export const { addTodo, deleteTodo, updateTodo, toggleTodo, deleteAllTodos } =
   todosSlice.actions;
 
 export default todosSlice.reducer;
