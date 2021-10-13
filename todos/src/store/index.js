@@ -32,10 +32,16 @@ const authMiddleware = (store) => (next) => (action) => {
 const userFromLocalStorage = LocalStorage.get("todoUser");
 const preloadedAuth = userFromLocalStorage
   ? { isAuthenticated: true, currentUser: userFromLocalStorage }
-  : {};
+  : undefined;
+
+const todosFromLocalStorage = LocalStorage.get("todoList");
+const preloadedTodos = todosFromLocalStorage
+  ? todosFromLocalStorage
+  : undefined;
 
 const preloadedState = {
   auth: preloadedAuth,
+  todos: preloadedTodos,
 };
 
 export default configureStore({
