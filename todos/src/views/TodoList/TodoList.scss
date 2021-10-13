@@ -1,4 +1,5 @@
 @use "../../sass/abstracts/placeholders";
+@use "../../sass/abstracts/variables" as var;
 
 .todos-list {
   @extend %list-reset;
@@ -18,6 +19,25 @@
       margin: 0 0 0 auto;
       letter-spacing: 0;
       text-transform: none;
+    }
+
+    .todo__title {
+      background-image: linear-gradient(
+        to top,
+        transparent calc(50% - 3px),
+        var.$done-color calc(50% - 3px),
+        var.$done-color 50%,
+        transparent 50%
+      );
+      background-size: 0 100%;
+      background-repeat: no-repeat;
+      transition: background-size 0.3s ease-in-out 0s;
+    }
+
+    &--done {
+      .todo__title {
+        background-size: 100% 100%;
+      }
     }
   }
 }

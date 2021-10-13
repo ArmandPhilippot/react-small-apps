@@ -17,8 +17,12 @@ function TodoListItem({ todo }) {
 
   const todoSlug = slugify(title);
 
+  const classNames = `todos-list__item ${
+    isChecked ? "todos-list__item--done" : ""
+  }`;
+
   return (
-    <li className="todos-list__item">
+    <li className={classNames}>
       <span className="todo__date">
         {new Date(createdAt).toLocaleDateString()}
       </span>
