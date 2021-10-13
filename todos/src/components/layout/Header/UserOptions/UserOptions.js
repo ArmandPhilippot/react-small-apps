@@ -27,7 +27,10 @@ function UserOptions({ username }) {
 
   return (
     <>
-      <Button modifier="user" onClickHandler={() => setIsExpanded(!isExpanded)}>
+      <Button
+        modifiers={["user"]}
+        onClickHandler={() => setIsExpanded(!isExpanded)}
+      >
         {username}
       </Button>
       {isExpanded ? displayUserOptions() : ""}

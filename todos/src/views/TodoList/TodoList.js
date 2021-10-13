@@ -18,9 +18,14 @@ function TodoList() {
   return (
     <div>
       <h2>Welcome back {currentUser.username}!</h2>
-      <Button modifier="action" onClickHandler={() => setIsToggled(!isToggled)}>
-        New todo
-      </Button>
+      <div className="todos-actions">
+        <Button
+          modifiers={["action"]}
+          onClickHandler={() => setIsToggled(!isToggled)}
+        >
+          New todo
+        </Button>
+      </div>
       {isToggled ? (
         <TodoForm userId={currentUser.id} closeForm={setIsToggled} />
       ) : (

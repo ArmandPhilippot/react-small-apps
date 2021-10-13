@@ -1,6 +1,11 @@
 @use "../../sass/abstracts/placeholders";
 @use "../../sass/abstracts/variables" as var;
 
+.todos-actions {
+  display: flex;
+  gap: 1rem;
+}
+
 .todos-list {
   @extend %list-reset;
   border: 1px solid #000;
@@ -8,6 +13,7 @@
 
   &__item {
     display: flex;
+    flex-flow: row wrap;
     align-items: center;
     gap: 1rem;
     padding: 1rem;

@@ -73,7 +73,7 @@ function LoginForm() {
           type="password"
           required
         />
-        <Button type="submit" modifier="submit">
+        <Button type="submit" modifiers={["submit"]}>
           Log in
         </Button>
       </Fieldset>

@@ -38,7 +38,10 @@ function TodoListItem({ todo }) {
         value={isChecked}
         updateValue={handleTodoDone}
       />
-      <Button modifier="action" onClickHandler={() => dispatch(deleteTodo(id))}>
+      <Button
+        modifiers={["action", "delete"]}
+        onClickHandler={() => dispatch(deleteTodo(id))}
+      >
         Delete
       </Button>
     </li>

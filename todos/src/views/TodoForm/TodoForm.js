@@ -27,7 +27,11 @@ function TodoForm({ userId, closeForm }) {
           value={bodyValue}
           updateValue={setBodyValue}
         />
-        <Button type="submit" modifier="submit" onClickHandler={handleSave}>
+        <Button
+          type="submit"
+          modifiers={["submit"]}
+          onClickHandler={handleSave}
+        >
           Save
         </Button>
       </Fieldset>
