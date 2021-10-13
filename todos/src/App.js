@@ -10,7 +10,7 @@ import "modern-normalize";
 import "./App.scss";
 
 function App() {
-  const isUserLoggedIn = useSelector((state) => state.auth.isAuthenticated);
+  const isLoggedIn = useSelector((state) => state.auth.isAuthenticated);
 
   return (
     <>
@@ -18,15 +18,15 @@ function App() {
       <Main>
         <Switch>
           <Route path="/account" component={Account}>
-            {isUserLoggedIn ? <Account /> : <Redirect to="/login" />}
+            {isLoggedIn ? <Account /> : <Redirect to="/login" />}
           </Route>
           <Route path="/login" component={LoginForm} />
           <Route path="/logout" component={Logout} />
           <Route path="/todo/:string" component={Todo}>
-            {isUserLoggedIn ? <Todo /> : <Redirect to="/login" />}
+            {isLoggedIn ? <Todo /> : <Redirect to="/login" />}
           </Route>
           <Route exact strict path="/">
-            {isUserLoggedIn ? <TodoList /> : <Redirect to="/login" />}
+            {isLoggedIn ? <TodoList /> : <Redirect to="/login" />}
           </Route>
         </Switch>
       </Main>
