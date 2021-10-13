@@ -1,11 +1,8 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "../../../forms";
 import "./UserOptions.scss";
 
-function UserOptions({ username }) {
-  const [isExpanded, setIsExpanded] = useState(false);
-
+function UserOptions({ username, isExpanded, setIsExpanded }) {
   const displayUserOptions = () => {
     return (
       <nav className="nav nav--user">
