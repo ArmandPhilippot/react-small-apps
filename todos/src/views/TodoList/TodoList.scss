@@ -6,6 +6,14 @@
   gap: 1rem;
 }
 
+.todos-filters {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem
+}
+
 .todos-list {
   @extend %list-reset;
   border: 1px solid #000;

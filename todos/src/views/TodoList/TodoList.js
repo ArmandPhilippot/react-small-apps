@@ -6,19 +6,43 @@ import TodoListItem from "./TodoListItem";
 import "./TodoList.scss";
 import { deleteAllTodos } from "../../store/todos/todos.slice";
 import { LocalStorage } from "../../services/LocalStorage.service";
+import TodoListFilters from "./TodoListFilters";
 
 function TodoList() {
+  const [todosList, setTodosList] = useState([]);
+  const [currentView, setCurrentView] = useState("all");
+  const dispatch = useDispatch();
   const [isToggled, setIsToggled] = useState(false);
   const currentUser = useSelector((state) => state.auth.currentUser);
-  const todosList = useSelector((state) => state.todos);
-  const userTodos = todosList.filter((todo) => todo.userId === currentUser.id);
-  const dispatch = useDispatch();
+  const allTodos = useSelector((state) => state.todos);
 
   useEffect(() => {
-    LocalStorage.set("todoList", todosList);
+    const userTodos = allTodos.filter((todo) => todo.userId === currentUser.id);
+
+    setTodosList(() => {
+      let list;
+
+      switch (currentView) {
+        case "completed":
+          list = userTodos.filter((todo) => todo.done);
+          break;
+        case "ongoing":
+          list = userTodos.filter((todo) => !todo.done);
+          break;
+        default:
+          list = userTodos;
+          break;
+      }
+
+      return list;
+    });
+  }, [currentView, allTodos, currentUser.id]);
+
+  useEffect(() => {
+    LocalStorage.set("todoList", allTodos);
   });
 
-  const userTodosList = userTodos.map((todo) => (
+  const userTodosList = todosList.map((todo) => (
     <TodoListItem key={todo.id} todo={todo} />
   ));
 
@@ -44,6 +68,10 @@ function TodoList() {
       ) : (
         ""
       )}
+      <TodoListFilters
+        currentView={currentView}
+        setCurrentView={setCurrentView}
+      />
       {userTodosList.length > 0 ? (
         <ul className="todos-list">{userTodosList}</ul>
       ) : (
