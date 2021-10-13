@@ -17,10 +17,14 @@ function App() {
       <Header />
       <Main>
         <Switch>
-          <Route path="/account" component={Account} />
+          <Route path="/account" component={Account}>
+            {isUserLoggedIn ? <Account /> : <Redirect to="/login" />}
+          </Route>
           <Route path="/login" component={LoginForm} />
           <Route path="/logout" component={Logout} />
-          <Route path="/todo/:string" component={Todo} />
+          <Route path="/todo/:string" component={Todo}>
+            {isUserLoggedIn ? <Todo /> : <Redirect to="/login" />}
+          </Route>
           <Route exact strict path="/">
             {isUserLoggedIn ? <TodoList /> : <Redirect to="/login" />}
           </Route>
