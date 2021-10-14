@@ -4,6 +4,7 @@ function Input({
   name,
   value,
   updateValue,
+  onBlurHandler,
   required,
   type = "text",
 }) {
@@ -28,6 +29,7 @@ function Input({
         checked={type === "checkbox" ? value : null}
         required={required ? "required" : false}
         onChange={handleChange}
+        onBlur={onBlurHandler}
         className="form__field"
       />
     </>

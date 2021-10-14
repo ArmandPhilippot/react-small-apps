@@ -10,7 +10,7 @@ const reducer = {
   users: usersReducer,
 };
 
-const authMiddleware = (store) => (next) => (action) => {
+const todosMiddleware = (store) => (next) => (action) => {
   const { type } = action;
   const result = next(action);
 
@@ -21,6 +21,10 @@ const authMiddleware = (store) => (next) => (action) => {
       break;
     case "auth/logout":
       LocalStorage.remove("todoUser");
+      break;
+    case "todos/updateTodo":
+      const todosState = store.getState().todos;
+      LocalStorage.set("todoList", todosState);
       break;
     default:
       break;
@@ -47,6 +51,6 @@ const preloadedState = {
 export default configureStore({
   reducer,
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(authMiddleware),
+    getDefaultMiddleware().concat(todosMiddleware),
   preloadedState,
 });
