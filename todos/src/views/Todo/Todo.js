@@ -56,7 +56,7 @@ function Todo() {
             {title}
           </div>
         )}
-        {body && isBodyEditable ? (
+        {isBodyEditable ? (
           <form
             action="#"
             method="post"
