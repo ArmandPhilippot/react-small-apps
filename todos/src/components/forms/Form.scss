@@ -63,7 +63,7 @@
 
 .btn {
   display: block;
-  padding: 0.8rem 1rem;
+  padding: clamp(0.5rem, 3vw, 0.8rem) clamp(0.5rem, 3vw, 1rem);
   border: none;
   border-radius: 3px;
   font-weight: 600;
