@@ -1,0 +1,63 @@
+@use "../../sass/abstracts/placeholders";
+@use "../../sass/abstracts/variables" as var;
+
+.todos-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.todos-filters {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  gap: clamp(0.2rem, 1vw, 0.5rem);
+  margin-top: 1rem
+}
+
+.todos-list {
+  @extend %list-reset;
+  border: 1px solid #000;
+  margin-top: 1.5rem;
+
+  &__item {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+
+    &:not(:first-child) {
+      border-top: 1px solid #000;
+    }
+
+    .form__label {
+      margin: 0;
+      letter-spacing: 0;
+      text-transform: none;
+    }
+
+    .todo__title {
+      background-image: linear-gradient(
+        to top,
+        transparent calc(50% - 3px),
+        var.$done-color calc(50% - 3px),
+        var.$done-color 50%,
+        transparent 50%
+      );
+      background-size: 0 100%;
+      background-repeat: no-repeat;
+      margin-right: auto;
+      transition: background-size 0.3s ease-in-out 0s;
+    }
+
+    &--done {
+      .todo__title {
+        background-size: 100% 100%;
+      }
+    }
+
+    .btn {
+      padding: 0.4rem 0.7rem;
+    }
+  }
+}

@@ -1,0 +1,31 @@
+.todo {
+  border: 1px solid #000;
+  margin-top: 2rem;
+  padding: 1rem;
+
+  & &__title {
+    font-size: 1.2rem;
+  }
+
+  & &__body {
+    margin-top: 1rem;
+    min-height: 10rem;
+  }
+}
+
+.todo-form {
+  &__field {
+    border: none;
+    padding: 0;
+    margin: 0;
+
+    &--textarea {
+      resize: none;
+      line-height: inherit;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
