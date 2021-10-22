@@ -1,0 +1,28 @@
+{
+  "name": "react-small-apps",
+  "description": "A collection of small apps implemented with ReactJS.",
+  "version": "1.0.0",
+  "license": "MIT",
+  "private": true,
+  "author": {
+    "name": "Armand Philippot",
+    "url": "https://www.armandphilippot.com"
+  },
+  "homepage": "https://github.com/ArmandPhilippot/react-small-apps#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com:ArmandPhilippot/react-small-apps.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ArmandPhilippot/react-small-apps/issues"
+  },
+  "scripts": {
+    "release": "standard-version -s"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^13.2.1",
+    "@commitlint/config-conventional": "^13.2.0",
+    "husky": "^7.0.4",
+    "standard-version": "^9.3.2"
+  }
+}
