@@ -1,0 +1,151 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background: rgb(241, 236, 236);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  font-size: 1rem;
+  line-height: 1.618;
+}
+
+.app {
+  display: flex;
+  flex-flow: column nowrap;
+  width: min(calc(100vw - 2rem), 1200px);
+  min-height: 100vh;
+  margin: auto;
+}
+
+.header {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.main {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(0, 550px));
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.footer {
+  text-align: center;
+  font-size: 0.9rem;
+  padding: 2rem 0;
+}
+
+.btn {
+  display: block;
+  padding: 0.5rem 1rem;
+}
+
+.btn--delete {
+  background: rgb(255, 193, 193);
+  border: 1px solid rgb(141, 68, 68);
+  font-weight: 500;
+}
+
+.form__fieldset {
+  padding: 0 1rem 1rem;
+}
+
+.form__legend {
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 0.5rem;
+}
+
+.form__item:not(:last-child) {
+  margin-bottom: 0.5rem;
+}
+
+.form__label {
+  display: block;
+  cursor: pointer;
+}
+
+.form__input {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  padding: 0.5rem 0.8rem;
+}
+
+.form__input--range {
+  padding: 0.5rem 0.8rem 0;
+}
+
+.form__select {
+  width: 100%;
+  padding: 0.5rem 0.8rem;
+}
+
+.meme-form .form {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.meme-form .form__fieldset {
+  position: relative;
+}
+
+.meme-form .btn--delete {
+  position: absolute;
+  top: -1.5rem;
+  right: 0;
+  padding: 0.4rem;
+}
+
+.meme-form .btn--add {
+  align-self: center;
+  margin: auto;
+}
+
+.meme-preview {
+  font-size: 2rem;
+}
+
+.meme-preview__meme {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: repeat(3, minmax(0, 1fr));
+  position: relative;
+}
+
+.meme-preview__image {
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
+  width: 100%;
+}
+
+.meme-preview__headline {
+  color: #fff;
+  font-weight: 600;
+  text-shadow: 3px 3px 2px #000;
+  padding: 0 0.5rem;
+}
+
+.meme-preview .form__input {
+  background: transparent;
+  border: none;
+  text-align: inherit;
+  width: 100%;
+}
+
+.meme-preview .form__input:focus {
+  outline: none;
+}
+
+.meme-preview .btn--random {
+  margin: 2rem auto;
+}
