@@ -1,7 +1,7 @@
 {
   "name": "react-redux-todos",
   "description": "A ToDos app implementation with React and Redux.",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "license": "MIT",
   "author": {
     "name": "Armand Philippot",
@@ -25,8 +25,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "release": "standard-version -s"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -44,10 +43,6 @@
     ]
   },
   "devDependencies": {
-    "@commitlint/cli": "^13.2.1",
-    "@commitlint/config-conventional": "^13.2.0",
-    "husky": "^7.0.2",
-    "sass": "^1.42.1",
-    "standard-version": "^9.3.1"
+    "sass": "^1.42.1"
   }
 }
