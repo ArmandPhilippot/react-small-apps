@@ -1,0 +1,78 @@
+.btn {
+  cursor: pointer;
+}
+
+.btn--delete {
+  background: hsl(0, 44%, 44%);
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px hsl(0, 44%, 29%), 1px 2px 1px 2px hsl(0, 44%, 29%);
+  width: 2.4rem;
+  height: 2.4rem;
+  padding: 0.5rem;
+  transition: transform 0.3s ease-in-out 0s;
+}
+
+.btn--delete:hover,
+.btn--delete:focus {
+  background: hsl(0, 44%, 50%);
+  transform: scale(1.1);
+}
+
+.btn--delete:active {
+  background: hsl(0, 44%, 40%);
+  transform: scale(1);
+}
+
+.btn .icon {
+  height: 100%;
+  width: 100%;
+}
+
+.btn--delete #trash-lid-handle {
+  stroke: #fff;
+  stroke-width: 4;
+}
+
+.btn--delete #trash-container,
+.btn--delete #trash-lid {
+  fill: hsl(0, 44%, 49%);
+  stroke: #fff;
+  stroke-width: 5;
+}
+
+.btn--delete #trash-stroke1,
+.btn--delete #trash-stroke2,
+.btn--delete #trash-stroke3 {
+  fill: #fff;
+  stroke: #fff;
+  stroke-width: 1;
+}
+
+.btn--restore {
+  background: hsl(212, 44%, 44%);
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px hsl(212, 44%, 29%), 1px 2px 1px 2px hsl(212, 44%, 29%);
+  width: 2.4rem;
+  height: 2.4rem;
+  padding: 0.5rem;
+  transition: transform 0.3s ease-in-out 0s;
+}
+
+.btn--restore:hover {
+  background: hsl(212, 44%, 50%);
+  transform: scale(1.1);
+}
+
+.btn--restore:active {
+  background: hsl(212, 44%, 40%);
+  transform: scale(1);
+}
+
+.btn--restore #restore-circle,
+.btn--restore #restore-arrow,
+.btn--restore #restore-first-clock-hand,
+.btn--restore #restore-second-clock-hand {
+  fill: #fff;
+}
