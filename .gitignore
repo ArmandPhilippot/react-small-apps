@@ -4,3 +4,7 @@ yarn-error*
 
 # Misc
 .vscode
+
+# Dotenv
+.env*
+!.env.example
