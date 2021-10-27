@@ -3,7 +3,6 @@
   "description": "A meme generator implementation with ReactJS.",
   "version": "1.0.0",
   "private": true,
-  "homepage": "./",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^12.1.2",
