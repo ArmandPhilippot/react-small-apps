@@ -6,7 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 import App from "./App";
 
 render(
-  <BrowserRouter>
+  <BrowserRouter basename={process.env.PUBLIC_URL}>
     <React.StrictMode>
       <App />
     </React.StrictMode>
