@@ -10,10 +10,10 @@ function NavJump({ pages }) {
         body: (
           <NavLink
             key={page.id}
-            activeClassName="list__link--current"
-            className="list__link"
+            className={({ isActive }) =>
+              isActive ? "list__link--current" : "list__link"
+            }
             aria-current="page"
-            exact
             to={page.url}
           >
             {page.title}

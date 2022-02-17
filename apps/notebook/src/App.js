@@ -1,4 +1,4 @@
-import { Redirect, Route, Switch, useLocation } from "react-router-dom";
+import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { Footer, Header, Main, Nav, Page } from "./components/layout";
 import { useCallback, useEffect, useState } from "react";
 import { defaultPages } from "./config/pages";
@@ -117,40 +117,47 @@ function App() {
       <Main>
         <div className={`notebook ${isCover() ? "notebook--cover" : ""}`}>
           <div className="notebook-page notebook-page--mirror"></div>
-          <Switch>
+          <Routes>
             <Route
-              exact
-              strict
-              path="/page/:number"
-              render={(route) => {
-                const requestedPageId = parseInt(route.match.params.number, 10);
-                if (requestedPageId === 0) return <Redirect to="/" />;
-                if (isPageExists(requestedPageId))
-                  return (
-                    <Page
-                      page={currentPage}
-                      setPage={setCurrentPage}
-                      removePage={removePage}
-                      restorePage={restorePage}
-                      deletedPages={deletedPages}
-                    />
-                  );
-                return <Redirect to="/404" />;
-              }}
+              path="/"
+              element={
+                <Page
+                  page={currentPage}
+                  setPage={setCurrentPage}
+                  removePage={removePage}
+                  restorePage={restorePage}
+                  deletedPages={deletedPages}
+                />
+              }
             />
-            <Route exact strict path={["/404", "/"]}>
-              <Page
-                page={currentPage}
-                setPage={setCurrentPage}
-                removePage={removePage}
-                restorePage={restorePage}
-                deletedPages={deletedPages}
-              />
-            </Route>
-            <Route path="*">
-              <Redirect to="/404" />
-            </Route>
-          </Switch>
+            <Route path="/page" element={<Navigate replace to="/404" />} />
+            <Route path="/page/0" element={<Navigate replace to="/" />} />
+            <Route
+              path="/page/:number"
+              element={
+                <Page
+                  page={currentPage}
+                  setPage={setCurrentPage}
+                  removePage={removePage}
+                  restorePage={restorePage}
+                  deletedPages={deletedPages}
+                />
+              }
+            />
+            <Route
+              element={
+                <Page
+                  page={currentPage}
+                  setPage={setCurrentPage}
+                  removePage={removePage}
+                  restorePage={restorePage}
+                  deletedPages={deletedPages}
+                />
+              }
+              path="/404"
+            />
+            <Route path="*" element={<Navigate replace to="/404" />} />
+          </Routes>
         </div>
         <Nav
           pages={pages}
