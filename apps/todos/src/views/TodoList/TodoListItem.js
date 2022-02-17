@@ -31,9 +31,7 @@ function TodoListItem({ todo }) {
         {new Date(createdAt).toLocaleDateString()}
       </span>
       <span className="todo__title">
-        <Link
-          to={{ pathname: `/todo/${todoSlug}`, state: { todoId: todo.id } }}
-        >
+        <Link to={`/todo/${todoSlug}`} state={{ todoId: todo.id }}>
           {title}
         </Link>
       </span>

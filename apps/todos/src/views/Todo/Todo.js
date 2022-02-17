@@ -1,7 +1,6 @@
 import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation } from "react-router";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { updateTodo } from "../../store/todos/todos.slice";
 import useToggle from "../../utilities/hooks";
 import "./Todo.scss";

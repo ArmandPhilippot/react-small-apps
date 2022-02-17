@@ -1,15 +1,15 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { useHistory } from "react-router";
+import { useNavigate } from "react-router-dom";
 import { logout } from "../../store/auth/auth.slice";
 
 function Logout() {
   const dispatch = useDispatch();
-  const history = useHistory();
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(logout());
-    history.push("/");
+    navigate("/");
   });
 
   return <>Logging out...</>;

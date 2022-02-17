@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router";
+import { useNavigate } from "react-router-dom";
 import { Button, Fieldset, Input } from "../../components/forms";
 import { login } from "../../store/auth/auth.slice";
 
@@ -10,7 +10,7 @@ function LoginForm() {
   const [errorMsg, setErrorMsg] = useState("");
   const usersList = useSelector((state) => state.users);
   const dispatch = useDispatch();
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const getCurrentUser = (email) => {
     return usersList.find((user) => user.email === email);
@@ -33,7 +33,7 @@ function LoginForm() {
       if (isValidPassword(currentUser, inputPasswordValue)) {
         setErrorMsg("");
         dispatch(login(currentUser));
-        history.push("/");
+        navigate("/");
       } else {
         setErrorMsg("The password does not match.");
       }
